@@ -1,0 +1,541 @@
+\section{Gruppen}
+
+\begin{question}
+ \begin{enumerate}
+  \item
+   Definieren sie, was eine Gruppe ist.
+  \item
+   Es sei $G$ eine Gruppe. Zeigen Sie:
+   \begin{enumerate}
+    \item
+     Es gibt genau ein neutrales Element.
+    \item
+     Jedes $g \in G$ besitzt genau ein Inverses.
+   \end{enumerate}
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Eine Gruppe ist eine Menge $G$ zusammen mit einer binären Verknüpfung
+   \[
+    \circ \colon G \times G \to G, (g,h) \mapsto g \circ h,
+   \]
+   die die folgenden Bedingungen erfüllt:
+   \begin{enumerate}
+    \item
+     $\circ$ ist assoziativ, d.h.
+     \[
+      (a \circ b) \circ c = a \circ (b \circ c) \quad \text{für alle $a,b,c \in G$}.
+     \]
+    \item
+     Es gibt ein neutrales Element bezüglich $\circ$, d.h.\ es existiert $e \in G$ mit
+     \[
+      e \circ g = g = g \circ e \quad \text{für alle $g \in G$}.
+     \]
+    \item
+     Jedes Element ist invertierbar, d.h. für jedes $g \in G$ gibt es ein Element $h \in G$ mit
+     \[
+      g \circ h = h \circ g = e.
+     \]
+     \end{enumerate}
+  \item
+   \begin{enumerate}
+    \item
+     Per Definition einer Gruppe besitzt $G$ mindestens ein neutrales Element. Sind $e, e' \in G$ zwei neutrale ELemente, d.h.\
+     \[
+      e \circ g = g = g \circ e
+      \quad\text{und}\quad
+      e' \circ g = g = g \circ e'
+      \quad
+      \text{für alle $g \in G$},
+     \]
+     so ist
+     \[
+      e = e \circ e' = e'.
+     \]
+     Also ist gibt es genau ein neutrales Element.
+    \item
+     Es sei $g \in G$. Per Definition einer Gruppe besitzt $g$ mindestens ein inverses Element. Es seien $h, h' \in G$ neutrale Elemente von $g$, d.h.
+     \[
+      g \circ h = h \circ g = e
+      \quad\text{und}\quad
+      g \circ h' = h' \circ g = e,
+     \]
+     wobei $e$ das neutrale Element von $G$ bezeichnet. Dann ist
+     \[
+      h = h \circ e = h \circ g \circ h' = e \circ h' = h'.
+     \]
+    Also besitzt $g$ genau ein inverses Element.
+   \end{enumerate}
+ \end{enumerate} 
+\end{solution}
+
+
+\begin{question}
+ Es sei $G$ eine Gruppe mit neutralen Element $1$. Zeigen Sie:
+ \begin{enumerate}
+  \item
+   Ist $g \in G$ mit $g^2 = g$, so ist $g = 1$.
+  \item
+   Für alle $g,h \in G$ ist $(gh)^{-1} = h^{-1} g^{-1}$.
+ \end{enumerate}
+\end{question}
+\begin{proof}
+ \begin{enumerate}
+  \item
+   Es sei $g \in G$ mit $g^2 = g$. Durch Multiplikation mit $g^{-1}$ auf beiden Seiten der Gleichung ergibt sich, dass
+   \[
+    g = g^2 g^{-1} = g g^{-1} = 1.
+   \]
+  \item
+   Es ist
+   \[
+    gh h^{-1} g^{-1} = g g^{-1} = 1,
+   \]
+   also wegen der Eindeutigkeit des inversen Elementes $(gh)^{-1} = g^{-1} h^{-1}$.
+  \qedhere
+ \end{enumerate}
+\end{proof}
+
+
+
+\begin{question}
+ Es sei $G$ eine Gruppe mit neutralen Element $1$ und $g^2 = 1$ für alle $g \in G$. Zeigen Sie, dass $g$ abelsch ist.
+\end{question}
+\begin{solution}
+ Für alle $g \in G$ ist $g \cdot g = 1$, also $g = g^{-1}$. Für alle $g,h \in G$ ist deshalb
+ \[
+  gh = g^{-1} h^{-1} = (hg)^{-1} = hg.
+ \]
+ Also ist $G$ abelsch.
+\end{solution}
+
+
+
+\begin{question}
+ Es sei $G$ eine Gruppe.
+ \begin{enumerate}
+  \item
+   Definieren Sie, was eine Untergruppe von $G$ ist.
+  \item
+   Es sei $H \subseteq G$ eine Untergruppe und $\circ$ die Multiplikation von $G$. Zeigen Sie, dass $H$ zusammen mit $\circ$ ebenfalls eine Gruppe bildet.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Eine Untergruppe von $G$ ist eine Teilmenge $H \subseteq G$, die die folgenden Bedingungen erfüllt:
+   \begin{enumerate}
+    \item
+     Ist $e \in G$ das neutrale Element von $G$, so ist $e \in H$.
+    \item
+     Sind $g, h \in H$, so ist auch $g \circ h \in H$.
+    \item
+     Ist $g \in H$, so ist auch $g^{-1} \in H$.
+   \end{enumerate}
+  \item
+   Für $a, b \in H$ ist auch $a \circ b \in H$. Also ist $H$ bezüglich $\circ$ abgeschlossen. Damit ist die Einschränkung von $\circ$ auf $H$ wohldefiniert.
+   
+   Die Multiplikation $\circ$ ist assoziativ auf $G$, d.h.
+   \[
+    (a \circ b) \circ c = a \circ (b \circ c)
+    \quad \text{für alle $a,b,c \in G$}
+   \]
+   Insbesondere gilt dies auch für alle $a,b,c \in H$. Also ist die Multiplikation $\circ$ auf $H$ assoziativ.
+   
+   Für das neutrale Element $e \in G$ ist
+   \[
+    g \circ e = e \circ g = g \quad \text{für all $g \in G$}.
+   \]
+   Insbesondere gilt dies für alle $g \in H$. Da $e \in H$ ist $e$ damit ein neutrales Element von $\circ$ auf $H$.
+   
+   Ist $g \in H$, so gibt es $g^{-1} \in G$ mit
+   \[
+    g \circ g^{-1} = g^{-1} \circ g = e.
+   \]
+   Da $e$ auch das neutrale Element von $H$ ist und $g^{-1} \in H$ ist $g$ bereits in $H$ invertierbar mit Inversen $g^{-1}$.
+   
+   Insgesamt zeigt dies, dass $H$ mit $\circ$ eine Gruppe bildet.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es seien $G_1$ und $G_2$ zwei Gruppen. Auf
+ \[
+  G_1 \times G_2 \coloneqq \{(g_1, g_2) \mid g_1 \in G_1, g_2 \in G_2\}
+ \]
+ ist eine Multiplikation definiert durch
+ \[
+  (g_1, g_2) \cdot (h_1, h_2) = (g_1 h_1, g_2 h_2)
+  \quad
+  \text{für alle $(g_1, g_2), (h_1, h_2) \in G_1 \times G_2$}.
+ \]
+ Zeigen Sie:
+ \begin{enumerate}
+  \item
+   $G_1 \times G_2$ zusammen mit $\cdot$ ist eine Gruppe.
+  \item
+   $G_1 \times G_2$ ist genau dann abelsch, wenn $G_1$ und $G_2$ beide abelsch sind.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Für alle $(g_1, g_2), (h_1, h_2), (k_1, k_2) \in G_1 \times G_2$ folgt aus der Assoziativität der Multiplikation von $G_1$ und $G_2$, dass
+   \begin{align*}
+     &\, ((g_1, g_2) \cdot (h_1, h_2)) \cdot (k_1, k_2) \\
+    =&\, (g_1 h_1, g_2 h_2) \cdot (k_1, k_2) \\
+    =&\, ((g_1 h_1) k_1, (g_2 h_2) k_2) \\
+    =&\, (g_1 (h_1 k_1), g_2 (h_2 k_2)) \\
+    =&\, (g_1, g_2) \cdot (h_1 k_1, h_2 k_2) \\
+    =&\, (g_1, g_2) \cdot ((h_1, h_2) \cdot (k_1, k_2)),
+   \end{align*}
+   also ist $\cdot$ assoziativ. Für die neutralen Elemente $e_1 \in G_1$ und $e_2 \in G_2$ ist für alle $(g_1, g_2) \in G_1 \times G_2$
+   \begin{align*}
+    (g_1, g_2) \cdot (e_1, e_2) &= (g_1 e_1, g_2 e_2) = (g_1, g_2) \text{ und} \\
+    (e_1, e_2) \cdot (g_1, g_2) &= (e_1 g_1, e_2 g_2) = (g_1, g_2),
+   \end{align*}
+   also ist $(e_1, e_2)$ ein neutrales Element bezüglich $\cdot$. Für $(g_1, g_2) \in G_1 \times G_2$ ist
+   \[
+    (g_1, g_2) \cdot (g_1^{-1}, g_2^{-1})
+    = (g_1 g_1^{-1}, g_2 g_2^{-1})
+    = (e_1, e_2),
+   \]
+   also ist $(g_1, g_2)$ invertierbar. Insgesamt zeigt dies, dass $G_1 \times G_2$ bezüglich $\cdot$ eine Gruppe ist.
+  \item
+   Sind $G_1$ und $G_2$ abelsch, so ist für alle $(g_1, g_2), (h_1, h_2) \in G_1 \times G_2$
+   \[
+    (g_1, g_2) \cdot (h_1, h_2)
+    = (g_1 h_1, g_2 h_2)
+    = (h_1 g_1, h_2 g_2)
+    = (h_1, h_2) \cdot (g_1, g_2).
+   \]
+   Also ist $G_1 \times G_2$ dann abelsch.
+   
+   Ist $G_1 \times G_2$ abelsch, so ist für alle $g,h \in G_1$
+   \[
+    (gh, e_2)
+    = (g, e_2) \cdot (h, e_2) 
+    = (h, e_2) \cdot (g, e_2)
+    = (hg, e_2),
+   \]
+   also $gh = hg$. Also ist $G_1$ abelsch. Analog ergibt sich, dass auch $G_2$ abelsch ist.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es sei $G$ eine Gruppe und $H_1, H_2 \subseteq G$ seien zwei Untergruppen. Zeigen Sie, dass auch $H_1 \cap H_2$ eine Untergruppe von $G$ ist.
+\end{question}
+\begin{proof}
+ Es sei $1$ das neutrale Element von $G$. Da $H_1$ und $H_2$ Untergruppen sind ist $1 \in H_1$ und $1 \in H_2$. Also ist auch $1 \in H_1 \cap H_2$.
+ 
+ Es seien $a,b \in H_1 \cap H_2$. Dann ist $a,b \in H_1$ und $a,b \in H_2$. Da $H_1$ und $H_2$ Untergruppen sind ist dann auch $ab \in H_1$ und $ab \in H_2$. Also ist auch $ab \in H_1 \cap H_2$.
+ 
+ Es sei $a \in H_1 \cap H_2$. Dann ist $a \in H_1$ und $a \in H_2$. Da $H_1$ und $H_2$ Untergruppen sind ist dann auch $a^{-1} \in H_1$ und $a^{-1} \in H_2$. Also ist dann auch $a^{-1} \in H_1 \cap H_2$.
+ 
+ Insgesamt zeigt dies, dass $H_1 \cap H_2$ eine Untergruppe ist.
+\end{proof}
+
+
+\begin{question}
+ Es seien $G$, $H$ Gruppen. Eine Abbildung $f \colon G \to H$ ist ein \emph{Gruppenhomomorphismus} falls
+ \[
+  f(xy) = f(x) f(y) \quad \text{für alle $x,y \in G$}.
+ \]
+ Es seien $1_G \in G$ und $1_H \in H$ die neutralen Elemente. Zeigen Sie:
+ \begin{enumerate}
+  \item
+   $f(1_G) = 1_H$.
+  \item
+   Für alle $x \in G$ ist $f(x^{-1}) = f(x)^{-1}$.
+  \item
+   $\ker f \coloneqq \{x \in G \mid f(x) = 1_H\}$ ist eine Untergruppe von $G$.
+  \item
+   $\im f \coloneqq \{f(x) \mid x \in G\}$ ist eine Untergruppe von $H$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Es ist
+   \[
+    f(1_G) = f(1_G 1_G) = f(1_G) f(1_G).
+   \]
+   Multiplikation mit $f(1_G)^{-1}$ ergibt
+   \[
+    1_H = f(1_G) f(1_G)^{-1} = f(1_G) f(1_G) f(1_G)^{-1} = f(1_G) 1_H = f(1_G).
+   \]
+  \item
+   Für alle $x \in G$ ist
+   \[
+    f(x) f(x^{-1}) = f(x x^{-1}) = f(1_G) = 1_H,
+   \]
+   also wegen der Eindeutigkeit des inversen Elements $f(x^{-1}) = f(x)^{-1}$.
+  \item
+   Da $f(1_G) = 1_H$ ist $1_G \in \ker f$. Für $x, y \in \ker f$ ist $f(x) = f(y) = 1_H$ und damit auch
+   \[
+    f(xy) = f(x) f(y) = 1_H 1_H = 1_H
+   \]
+   und damit $xy \in \ker f$. Für $x \in \ker f$ ist $f(x) = 1_H$, also
+   \[
+    f(x^{-1}) = f(x)^{-1} = 1_H^{-1} = 1_H
+   \]
+   und somit $1_H \in \ker f$. Insgesamt zeigt dies, dass $\ker f$ eine Untergruppe ist.
+  \item
+   Es ist $1_H = f(1_G) \in \im f$. Für $x, y \in \im f$ gibt es $x', y' \in G$ mit $f(x') = x$ und $f(y') = y$. Dann ist
+   \[
+    xy = f(x') f(y') = f(x' y') \in \im f.
+   \]
+   Für $x \in \im f$ ist außerdem auch
+   \[
+    x^{-1} = f(x)^{-1} = f(x^{-1}) \in G.
+   \]
+   Insgesamt zeigt dies, dass $\im f$ eine Untergruppe ist.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es sei $G$ eine Gruppe und $g \in G$. 
+ \begin{enumerate}
+  \item
+   Für alle $n \in \Z$ sei
+   \[
+    g^n \coloneqq
+    \begin{cases}
+     \underbrace{g \dotsm g}_n              & \text{falls $n > 1$}, \\
+     1                                      & \text{falls $n = 0$}, \\
+     \underbrace{g^{-1} \dotsm g^{-1}}_{-n} & \text{falls $n < 0$}.
+    \end{cases}
+   \]
+   Zeigen Sie:
+   \begin{enumerate}
+    \item
+     $(g^n)^{-1} = g^{-n}$ für alle $n \in \Z$,
+    \item
+     $g^n g^m = g^{n+m}$ für alle $n,m \in \Z$.
+   \end{enumerate}
+  \item
+   Es sei
+   \[
+    H \coloneqq \{g^n \mid n \in \Z\} = \{ \dotso, g^{-3}, g^{-2}, g^{-1}, 1, g, g^2, g^3, \dotso \}.
+   \]
+   Zeigen Sie, dass $H$ eine Untergruppe von $G$ ist.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   \begin{enumerate}
+    \item
+     Ist $n > 1$, so ist
+     \[
+      (g^n)^{-1} = (\underbrace{g \dotsm g}_n)^{-1} = \underbrace{g^{-1} \dotsm g^{-1}}_n = g^{-n}.
+     \]
+     Ist $n < 1$, so ist $-n > 1$ und deshalb nach dem schon betrachteten Fall
+     \[
+      (g^{-n})^{-1} = g^{-(-n)} = g^n.
+     \]
+     Invertieren von beiden Seiten ergibt, dass $g^{-n} = (g^n)^{-1}$. Ist schließlich $n = 0$, so ist
+     \[
+      (g^n)^{-1} = (g^0)^{-1} = 1^{-1} = 1 = g^0 = g^n.
+     \]
+    \item
+     Ist $n, m \geq 1$, so ist
+     \[
+      g^n g^m
+      = \underbrace{g \dotsm g}_n \cdot \underbrace{g \dotsm g}_m
+      = \underbrace{g \dotsm g}_{n+m} = g^{n+m}.
+     \]
+     Ist $n, m \leq -1$, so ist
+     \[
+      g^n g^m
+      = \underbrace{g^{-1} \dotsm g^{-1}}_{-n} \underbrace{g^{-1} \dotsm g^{-1}}_{-m}
+      = \underbrace{g^{-1} \dotsm g^{-1}}_{-(n+m)}
+      = g^{n+m}.
+     \]
+     Ist $n = 0$ und $m \in \Z$, so ist
+     \[
+      g^n g^m = g^0 g^m = 1 \cdot g^m = g^m = g^{0+m} = g^{n+m}
+     \]
+     und ist $n \in \Z$ und $m = 0$, so ist
+     \[
+      g^n g^m = g^n g^0 = g^n \cdot 1 = g^n = g^{n+0} = g^{n+m}.
+     \]
+     Ist $n \leq -1$ und $m \geq 1$ so ist für $m \geq -n$
+     \[
+      g^n g^m
+      = \underbrace{g^{-1} \dotsm g^{-1}}_{-n} \underbrace{g \dotsm g}_m
+      = \underbrace{g \dotsm g}_{m+n}
+      = g^{n+m}
+     \]
+     und für $m < -n$, also $n+m \leq 1$, ist
+     \[
+      g^n g^m
+      = \underbrace{g^{-1} \dotsm g^{-1}}_{-n} \underbrace{g \dotsm g}_m
+      = \underbrace{g^{-1} \dotsm g^{-1}}_{-n-m}
+      = \underbrace{g^{-1} \dotsm g^{-1}}_{-(n+m)}
+      = g^{n+m}.
+     \]
+     Der Fall $n \geq 1$, $m \leq -1$ verläuft analog zum Fall $n \leq -1$, $m \geq 1$.
+   \end{enumerate}
+  \item
+   Per Definition von $H$ ist $1 = g^0 \in H$. Für $h_1, h_2 \in H$ gibt es $n_1, n_2 \in \Z$ mit $h_1 = g^{n_1}$ und $h_2 = g^{n_2}$. Es ist daher auch
+   \[
+    h_1 h_2 = g^{n_1} g^{n_2} = g^{n_1 + n_2} \in H.
+   \]
+   Für $h \in H$ gibt es $n \in \Z$ mit $h = g^n$, weshalb auch $h^{-1} = (g^n)^{-1} = g^{-n} \in H$. Insgesamt zeigt dies, dass $H$ eine Untergruppe ist.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Zeigen Sie, dass $\GL_n(k) \subseteq \Mat_n(k)$ bezüglich der Matrizenmultiplikation eine Gruppe bildet.
+\end{question}
+\begin{solution}
+ Da Matrizenmultiplikation assoziativ ist folgt die Assoziativität der Matrizenmultiplikation auf $\GL_n(k)$.
+ 
+ Sind $A, B \in \GL_n(k)$ so sind $A$ und $B$ invertierbar. Also gibt es $A^{-1} \in \Mat_n(k)$ und $B^{-1} \in \Mat_n(k)$ mit $A A^{-1} = B B^{-1} = I_n$. Dann ist
+ \[
+  (AB) (B^{-1} A^{-1})
+  = A B B^{-1} A^{-1}
+  = A I_n A^{-1}
+  = A A^{-1}
+  = I_n,
+ \]
+ also auch $AB$ invertierbar und deshalb $AB \in \GL_n(k)$. Also ist $\GL_n(k)$ unter der Matrizenmultiplikation abgeschlossen.
+ 
+ Da die Einheitsmatrix $I_n$ invertierbar ist (mit $I_n^{-1} = I_n$) ist $I_n \in \GL_n(k)$. Da $A = I_n A = A I_n$ für alle $A \in \Mat_n(k)$ gilt dies insbesondere für alle $A \in \GL_n(k)$. Also ist $I_n$ ein neutrales Element bezüglich der Matrizenmultiplikation auf $\GL_n(k)$.
+ 
+ Ist $A \in \GL_n(k)$ so gibt es $A^{-1} \in \Mat_n(k)$ mit $A A^{-1} = A^{-1} A = I_n$. Dann ist auch $A^{-1}$ invertierbar und deshalb $A^{-1} \in \GL_n(k)$. Da $I_n$ das neutrale Element von $\GL_n(k)$ ist, ist damit jedes Element in $\GL_n(k)$ invertierbar in $\GL_n(k)$.
+ 
+ Insgesamt zeigt dies, dass $\GL_n(k)$ eine Gruppe bezüglich der Matrizenmultiplikation ist.
+\end{solution}
+
+
+\begin{question}
+ Es sei
+ \[
+  G \coloneqq
+  \left\{
+  \begin{pmatrix}
+   1 & 0 & 0 \\
+   0 & 1 & 0 \\
+   0 & 0 & 1
+  \end{pmatrix},
+  \begin{pmatrix}
+   0 & 0 & 1 \\
+   1 & 0 & 0 \\
+   0 & 1 & 0
+  \end{pmatrix},
+  \begin{pmatrix}
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
+   1 & 0 & 0
+  \end{pmatrix}
+  \right\}
+  \subseteq \Mat_n(\R).
+ \]
+ Zeigen Sie, dass $G$ aus invertierbaren Matrizen besteht und dass $G \subseteq \GL_n(\R)$ eine Untergruppe bildet.
+\end{question}
+\begin{solution}
+ Es sei
+ \[
+  A \coloneqq
+  \begin{pmatrix}
+   0 & 0 & 1 \\
+   1 & 0 & 0 \\
+   0 & 1 & 0
+  \end{pmatrix}.
+ \]
+ Durch direktes Nachrechnen ergibt sich, dass
+ \[
+  A^2 =
+  \begin{pmatrix}
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
+   1 & 0 & 0
+  \end{pmatrix}
+  \quad \text{und} \quad
+  A^3 =
+  \begin{pmatrix}
+   1 & 0 & 0 \\
+   0 & 1 & 0 \\
+   0 & 0 & 1
+  \end{pmatrix}
+  = I_3 = A^0.
+ \]
+ Also ist
+ \[
+  G = \{I_3, A, A^2\} = \{A^0, A^1, A^2\}
+ \]
+ und $A^3 = A^0 = I_3$. Da $I_3$ invertierbar ist und $A A^2 = A^3 = I_3$ sind $I_3$, $A$ und $A^2$ invertierbar. Also besteht $G$ aus invertierbaren Matrizen. Insbesondere ist $G \subseteq \GL_3(\R)$.
+ 
+ Die Bedingunen einer Untergruppe ergeben sich leicht: Das neutrale Element von $\GL_3(\R)$ ist $I_3$ und $I_3 \in G$. Für $g,h \in G$ gibt es $n, m \in \{0, 1, 2\}$ mit $g = A^n$ und $h = A^m$. Da $A^3 = I_3$ ist
+ \[
+  gh = A^n A^m = A^{n+m} = A^{n+m \bmod 3} \in G.
+ \]
+ Ist $g \in G$ so ist $g = A^n$ für ein $n \in \{0,1,2\}$ und da $A^n A^{3-n} = A^3 = I_n$ ist $(A^n)^{-1} = A^{n-3}$. Also ist
+ \[
+  g^{-1} = (A^n)^{-1} = A^{3-n} \in G.
+ \]
+ Zusammen zeigt dies, dass $G$ eine Untergruppe von $\GL_3(\R)$ ist.
+\end{solution}
+
+
+\begin{question}
+ Es sei $G$ eine Gruppe, $g \in G$, und $\alpha \colon G \to G, h \mapsto ghg^{-1}$. Zeigen Sie:
+ \begin{enumerate}
+  \item
+   Für alle $h_1, h_2 \in G$ ist $\alpha(h_1 h_2) = \alpha(h_1) \alpha(h_2)$.
+  \item
+   $\alpha$ ist bijektiv.
+  \item 
+   Ist $G$ kommutativ, so ist $\alpha = \id_G$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Für alle $h_1, h_2 \in G$ ist
+   \[
+    \alpha(h_1) \alpha(h_2)
+    = g h_1 g^{-1} g h_2 g^{-1}
+    = g h_1 h_2 g^{-1}
+    = \alpha(h_1 h_2).
+   \]
+  \item
+   Es sei $\beta \colon G \to G$ definiert durch
+   \[
+    \beta(h) = g^{-1} h g \quad \text{für alle $h \in G$}.
+   \]
+   Für alle $h \in G$ ist dann
+   \[
+    \alpha(\beta(h)) = gg^{-1}hgg^{-1} = h
+    \quad \text{und} \quad
+    \beta(\alpha(h)) = g^{-1}ghg^{-1}g = h,
+   \]
+   also ist $\alpha \circ \beta = \beta \circ \alpha = \id_G$. Also ist $\alpha$ bijektiv mit $\alpha^{-1} = \beta$.
+  \item
+   Ist $G$ kommutativ, so ist für alle $h \in G$
+   \[
+    \alpha(h) = ghg^{-1} = gg^{-1}h = h = \id_G(h),
+   \]
+   also $\alpha = \id_G$.
+ \end{enumerate}
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+

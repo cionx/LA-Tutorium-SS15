@@ -1,0 +1,117 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../mystyle}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\title{Basen und lineare Abbildungen}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{thrm}
+ Es sei $V$ ein endlichdimensionaler $K$-Vektorraum und $v_1, \dotsc, v_n \in V$ eine Basis von $V$. Es sei $W$ ein weiterer $K$-Vektorraum (nicht notwendigerweise endlichdimensional.)
+ \begin{enumerate}[label=\roman*)]
+  \item
+   Eine lineare Abbildung $f \colon V \to W$ ist durch die Werte $f(v_i)$ für $i = 1, \dotsc, n$ eindeutig bestimmt. Das bedeutet: Sind $f, g \colon V \to W$ zwei lineare Abbildungen mit $f(v_i) = g(v_i)$ für alle $i = 1, \dotsc, n$, so ist bereits $f = g$.
+  \item
+   Für beliebige Werte $w_1, \dotsc, w_n \in W$ gibt es eine lineare Abbildung $f \colon V \to W$ mit $f(v_i) = w_i$ für alle $i = 1, \dotsc, n$.
+  \item
+   Für beliebige $w_1, \dotsc, w_n$ existiert eine eindeutige (!) lineare Abbildung $f \colon V \to W$ mit $f(v_i) = w_i$ für alle $i = 1, \dotsc, n$.
+ \end{enumerate}
+\end{thrm}
+\begin{proof}
+\begin{enumerate}[label=\roman*)]
+  \item\label{enum: Eindeutigkeit lineare Abbildung}
+   Wir präsentieren zwei Beweise.
+   \begin{enumerate}[label=\arabic*.]
+   
+    \item
+     Es sei $v \in V$ beliebig aber fest. Das $v_1, \dotsc, v_n$ insbesondere ein Erzeugendensystem von $V$ ist, gibt es (eindeutige) Skalara $\lambda_1, \dotsc, \lambda_n \in K$ mit $v = \sum_{i=1}^n \lambda_i v_i$. Wegen der Linearität von $f$ und $g$ ist
+     \begin{align*}
+      f(v)
+      &= f\left( \sum_{i=1}^n \lambda_i v_i \right)
+      = \sum_{i=1}^n \lambda_i f(v_i) \\
+      &= \sum_{i=1}^n \lambda_i g(v_i)
+      = g\left( \sum_{i=1}^n \lambda_i v_i \right)
+      = g(v).
+     \end{align*}
+     Wegen der Beliebigkeit von $v \in V$ folgt, dass $f(v) = g(v)$ für alle $v \in V$, und somit $f = g$.
+     
+    \item
+     Weil $f$ und $g$ linear sind ist es auch $f-g \colon V \to W$. Es ist
+     \[
+      (f-g)(v_i) = f(v_i) - g(v_i) = 0 \quad \text{für alle $i = 1, \dotsc, n$}.
+     \]
+     Also ist $\ker(f-g) \subseteq V$ ein Untervektorraum mit $v_i \in \ker(f-g)$ für alle $i = 1, \dotsc, n$. Da $v_1, \dotsc, v_n$ ein Erzeugendensystem von $V$ ist, ist bereits $\ker(f-g) = V$. Also ist
+     \[
+      f(v) - g(v) = (f-g)(v) = 0 \quad \text{für alle $v \in V$},
+     \]
+     und somit $f(v) = g(v)$ für alle $v \in V$.
+   \end{enumerate}
+   
+  \item\label{enum: Existenz einer linearen Abbildung}
+   Es sei $v \in V$. Da $v_1, \dotsc, v_n$ eine Basis von $V$ ist gibt es eindeutige Skalare $\lambda_1, \dotsc, \lambda_n \in K$ mit $v = \sum_{i=1}^n \lambda_i v_i$. Wir definieren
+   \[
+    f(v) \coloneqq \sum_{i=1}^n \lambda_i w_i.
+   \]
+   $f(v)$ ist wohldefiniert, da die Skalare $\lambda_1, \dotsc, \lambda_n$ eindeutig sind.
+   
+   Wir zeigen zunächst, dass $f$ linear ist: Sind $v, v' \in V$ mit
+   \[
+    v = \sum_{i=1}^n \lambda_i v_i \quad \text{und} \quad v' = \sum_{i=1}^n \mu_i v_i,
+   \]
+   so ist
+   \[
+    v + v' = \sum_{i=1}^n (\lambda_i + \mu_i) v_i.
+   \]
+   Deshalb ist
+   \[
+    f(v + v')
+    = \sum_{i=1}^n (\lambda_i + \mu_i) w_i
+    = \sum_{i=1}^n \lambda_i w_i + \sum_{i=1}^n \mu_i w_i
+    = f(v) + f(v').
+   \]
+   Also ist $f$ mit der Addition verträglich. Für $v \in V$ und $\mu \in K$ mit $v = \sum_{i=1}^n \lambda_i v_i$ ist $\mu v = \sum_{i=1}^n (\mu \lambda_i) v_i$ und somit
+   \[
+    f(\mu v)
+    = \sum_{i=1}^n (\mu \lambda_i) w_i
+    = \mu \sum_{i=1}^n \lambda_i w_i
+    = \mu f(v).
+   \]
+   Also ist $f$ mit der Skalarmultiplikation verträglich. Somit ist $f$ linear.
+   
+   Für alle $i = 1, \dotsc, n$ ist $v_i = \sum_{j=1}^n \delta_{ij} v_j$, wobei
+   \[
+    \delta_{ij} =
+    \begin{cases}
+     1 & \text{falls $i = j$}, \\
+     0 & \text{falls $i \neq j$}.
+    \end{cases}
+   \]
+   Daher ist
+   \[
+    f(v_i) = \sum_{j=1}^n \delta_{ij} w_j = w_i
+    \quad \text{für alle $i = 1, \dotsc, n$}.
+   \]
+  
+  \item
+   \ref{enum: Existenz einer linearen Abbildung} liefert die Existenz und \ref{enum: Eindeutigkeit lineare Abbildung} die Eindeutigkeit.
+  \qedhere
+ \end{enumerate}
+\end{proof}
+
+\begin{bem}
+  Im Beweis von \ref{enum: Eindeutigkeit lineare Abbildung} wird nur gebraucht, dass $v_1, \dotsc, v_n$ ein Erzeugendensystem von $V$ ist. Eine lineare Abbildung ist also eindeutig durch ihr Verhalten auf einem Erzeugendensystem festgelegt.
+\end{bem}
+
+
+
+
+
+\end{document}

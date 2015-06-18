@@ -1,0 +1,34 @@
+\section{Notationen}
+
+Für ein Körper $k$ ist
+\[
+ \Mat(n \times m, k) \coloneqq
+ \left\{
+  \begin{pmatrix}
+   a_{11} & \cdots & a_{1m} \\
+   \vdots & \ddots & \vdots \\
+   a_{n1} & \cdots & a_{nm}
+  \end{pmatrix}
+  \,\middle|\,
+  \text{$a_{ij} \in k$ für alle $i=1,\dotsc,n$, $j=1,\dotsc,m$}
+  \right\}
+\]
+der Vektorraum der $(n \times m)$-Matrizen über $k$. Für den Fall $n = m$ schreiben wir auch
+\[
+ \Mat_n(k) \coloneqq \Mat(n \times n, k)
+\]
+für die quadratischen $(n \times n)$-Matrizen über $k$.
+\[
+ I_n \coloneqq
+ \begin{pmatrix}
+  1      & 0      & \cdots & 0      \\
+  0      & 1      & \cdots & 0      \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0      & 0      & \cdots & 1
+ \end{pmatrix}
+ \in \Mat_n(k)
+\]
+bezeichnet die Einheitsmatrix von Größe $n$. Sofern die Größe $n$ aus dem Kontext klar ist schreiben wir auch nur $I$ statt $I_n$. Ferner ist
+\[
+ \GL_n(k) \coloneqq \{A \in \Mat_n(k) \mid \text{$A$ ist invertierbar}\}.
+\]

@@ -1,0 +1,261 @@
+\section{Lineare Abbildungen}
+
+
+\begin{question}
+ Es seien $V$ und $W$ zwei $k$-Vektorräume und $f \colon V \to W$ linear. Zeigen Sie:
+ \begin{enumerate}
+  \item
+   $f(0) = 0$.
+  \item
+   $\ker f \coloneqq \{v \in V \mid f(v) = 0\}$ ist ein Untervektorraum von $V$.
+  \item
+   $\im f \coloneqq \{f(v) \mid v \in V\}$ ist ein Untervektorraum von $W$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Es ist
+   \[
+    f(0) = f(0+0) = f(0)+f(0).
+   \]
+   Subtraktion von $f(0)$ von beiden Seiten der Gleichung ergibt $0 = f(0)$.
+  \item
+   Da $f(0) = 0$ ist $0 \in \ker f$. Für $v_1, v_2 \in \ker f$ ist $f(v_1) = f(v_2) = 0$ und damit auch
+   \[
+    f(v_1+v_2) = f(v_1) + f(v_2) = 0 + 0 = 0,
+   \]
+   also $v_1 + v_2 \in \ker f$. Für $\lambda \in k$ und $v \in V$ ist $f(v) = 0$ und damit
+   \[
+    f(\lambda v) = \lambda f(v) = \lambda \cdot 0 = 0,
+   \]
+   also auch $\lambda v \in \ker f$. Dies zeigt, dass $\ker f$ ein Untervektorraum von $V$ ist.
+  \item
+   Es ist $0 = f(0) \in \im f$. Für $w_1, w_2 \in \im f$ gibt es $v_1, v_2 \in V$ mit $f(v_1) = w_1$ und $f(v_2) = w_2$; dann ist auch
+   \[
+    w_1 + w_2 = f(v_1) + f(v_2) = f(v_1 + v_2) \in \im f.
+   \]
+   Für $\lambda \in k$ und $w \in \im f$ gibt es ein $v \in V$ mit $f(v) = w$, weshalb auch
+   \[
+    \lambda w = \lambda f(v) = f(\lambda v) \in \im f.
+   \]
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es seien $V$ und $W$ zwei $k$-Vektorräume und $f, g \colon V \to W$ linear. $f + g$ ist definiert als
+ \[
+  (f + g)(v) \coloneqq f(v) + g(v) \quad \text{für alle $v \in V$}
+ \]
+ und für alle $\lambda \in k$ ist $\lambda \cdot f$ definiert als
+ \[
+  (\lambda \cdot f)(v) \coloneqq \lambda f(v) \quad \text{für alle $v \in V$}.
+ \]
+ Zeigen Sie, dass auch $f + g$ linear ist, und dass für $\lambda \in k$ auch $\lambda \cdot f$ linear ist.
+\end{question}
+\begin{solution}
+ Für alle $v_1, v_2 \in V$ ist
+ \begin{align*}
+  (f + g)(v_1 + v_2)
+  &= f(v_1 + v_2) + g(v_1 + v_2) \\
+  &= f(v_1) + f(v_2) + g(v_1) + g(v_2) \\
+  &= f(v_1) + g(v_1) + f(v_2) + g(v_2) \\
+  &= (f + g)(v_1) + (f + g)(v_2),
+ \end{align*}
+ und für alle $\mu \in k$ und $v \in V$ ist
+ \begin{align*}
+  (f + g)(\mu v)
+  &= f(\mu v) + g(\mu v)
+  = \mu f(v) + \mu g(v) \\
+  &= \mu (f(v) + g(v))
+  = \mu (f + g)(v).
+ \end{align*}
+ Also ist $f + g$ linear.
+ 
+ Für alle $v_1, v_2 \in V$ ist
+ \begin{align*}
+  (\lambda f)(v_1 + v_2)
+  &= \lambda f(v_1 + v_2)
+  = \lambda (f(v_1) + f(v_2)) \\
+  &= \lambda f(v_1) + \lambda f(v_2)
+  = (\lambda f)(v_1) + (\lambda f)(v_2),
+ \end{align*}
+ und für alle $\mu \in k$ und $v \in V$ ist
+ \[
+  (\lambda f)(\mu v)
+  = \lambda f(\mu v)
+  = \lambda \mu f(v)
+  = \mu \lambda f(v)
+  = \mu (\lambda f)(v).
+ \]
+ Also ist $\lambda f$ linear.
+\end{solution}
+
+
+
+\begin{question}
+ Es seien $V$ und $W$ zwei $k$-Vektorräume und $f, g \colon V \to W$ zwei lineare Abbildungen. Zeigen Sie, dass 
+ \[
+  U \coloneqq \{v \in V \mid f(v) = g(v)\}
+ \]
+ ein Untervektorraum von $V$ ist.
+\end{question}
+\begin{solution}
+ Da $f$ und $g$ linear sind, ist es auch $f-g \colon V \to W$. Daher ist
+ \[
+  U
+  = \{v \in V \mid f(v) = g(v)\} 
+  = \{v \in V \mid (f-g)(v) = 0\}
+  = \ker (f-g)
+ \]
+ ein Untervektorraum.
+ 
+ Die Aussage lässt sich auch explizit nachrechnen: Da $f$ und $g$ linear sind, ist
+ \[
+  f(0) = 0 = g(0),
+ \]
+ also $0 \in U$. Sind $v, w \in U$, so ist $f(v) = g(v)$ und $f(w) = g(w)$. Aus der Linearität von $f$ und $g$ folgt damit, dass
+ \[
+  f(v+w) = f(v) + f(w) = g(v) + g(w) = g(v+w),
+ \]
+ also $v+w \in U$. Ist $\lambda \in k$ und $v \in U$, so ist $f(v) = g(v)$. Wegen der Linearität von $f$ und $g$ folgt, dass
+ \[
+  f(\lambda v) = \lambda f(v) = \lambda g(v) = g(\lambda v),
+ \]
+ also $\lambda v \in U$. Damit ergibt sich ebenfalls, dass $U$ ein Untervektorraum ist.
+\end{solution}
+
+
+\begin{question}
+ Es seien $V$ und $W$ zwei $k$-Vektorräume, $f \colon V \to W$ eine lineare Abbildung und $U \subseteq W$ ein Untervektorraum. Zeigen Sie, dass
+ \[
+  f^{-1}(U) = \{v \in V \mid f(v) \in U\}
+ \]
+ ein Untervektorraum von $V$ ist.
+\end{question}
+\begin{solution}
+ Es ist $0 \in U$, da $U$ ein Untervektorraum von $W$ ist; damit ist $f(0) = 0 \in U$, also $0 \in f^{-1}(U)$.
+ 
+ Für $v_1, v_2 \in f^{-1}(U)$ ist $f(v_1), f(v_2) \in U$. Da $U$ ein Untervektorraum ist, ist dann auch $f(v_1) + f(v_2) \in U$. Damit ist
+ \[
+  f(v_1 + v_2) = f(v_1) + f(v_2) \in U,
+ \]
+ also $v_1 + v_2 \in f^{-1}(U)$.
+ 
+ Für $\lambda \in k$ und $v \in f^{-1}(U)$ ist $f(v) \in U$. Da $U$ ein Untervektorraum ist, ist dann auch $\lambda f(v) \in U$. Deshalb ist
+ \[
+  f(\lambda v) = \lambda f(v) \in U,
+ \]
+ also $\lambda v \in f^{-1}(U)$.
+ 
+ Ingesamt zeigt dies, dass $f^{-1}(U)$ ein Untervektorraum ist.
+\end{solution}
+
+
+\begin{question}
+ Es sei $V$ ein Vektorraum und $f \colon V \to V$ linear und idempotent, d.h.\ $f^2 = f$. Zeigen Sie:
+ \begin{enumerate}
+  \item
+   Es ist $\im f \cap \ker f = 0$.
+  \item
+   Für jedes $v \in V$ gibt es $v_1 \in \im f$ und $v_2 \in \ker f$ mit $v = v_1 + v_2$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Da $\im f$ und $\ker f$ Untervektorräume von $V$ sind, ist auch $\im f \cap \ker f$ ein Untervektorraum. Also ist $0 \in \im f \cap \ker f$. Andererseits sei $v \in \im f \cap \ker f$. Da $v \in \im f$ gibt es $v' \in V$ mit $f(v') = v$. Da $v \in \ker f$ ist außerdem $f(v) = 0$. Daher ist
+   \[
+    v = f(v') = f^2(v') = f(f(v')) = f(v) = 0.
+   \]
+   Also ist $\im f \cap \ker f = 0$.
+  \item
+   Es sei $v \in V$. Es seien
+   \[
+    v_1 \coloneqq f(v) \quad \text{und} \quad v_2 \coloneqq v - v_1.
+   \]
+   Per Definition ist $v = v_1 + v_2$ und $v_1 \in \im f$. Da
+   \begin{align*}
+    f(v_2) &= f(v - v_1) = f(v) - f(v_1) \\
+           &= f(v) - f(f(v)) = f(v) - f^2(v) \\
+           &= f(v) - f(v) = 0
+   \end{align*}
+   ist außerdem $v_2 \in \ker f$.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es sei $V$ ein reeler Vektorraum und $f \colon V \to V$ linear und \emph{involutiv}, d.h.\ $f^2 = \id_V$. Es sei
+ \[
+  V_+ \coloneqq \{v \in V \mid f(v) = v\}
+  \quad \text{und} \quad
+  V_- \coloneqq \{v \in V \mid f(v) = -v\}.
+ \]
+ Zeigen Sie:
+ \begin{enumerate}
+  \item
+   $V_+$ und $V_-$ sind Untervektorräume von $V$.
+  \item
+   $V_+ \cap V_- = 0$.
+  \item
+   Für jedes $v \in V$ gibt es eindeutige $v_1 \in V_+$ und $v_2 \in V_-$ mit $v = v_1 + v_2$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Da $f$ und $\id_V$ linear sind, sind auch $f + \id_V$ und $f - \id_V$ linear. Daher sind
+   \begin{gather*}
+    V_+
+    = \{v \in V \mid f(v) = v\}
+    = \{v \in V \mid (f - \id_V)(v) = 0\}
+    = \ker (f - \id_V)
+   \shortintertext{und}
+    V_-
+    = \{v \in V \mid f(v) = -v\}
+    = \{v \in V \mid (f + \id_V)(v) = 0\}
+    = \ker (f + \id_V)
+   \end{gather*}
+   Untervektorräume.
+  \item
+   Es sei $v \in V_+ \cap V_-$. Dann ist
+   \[
+    v = f(v) = -v,
+   \]
+   also $2v = 0$ und somit $v = 0$. (Hier benutzen wir, dass es sich um einen reellen Vektorraum handelt.)
+  \item
+   Es sei $v \in V$. Wenn es $v_1 \in V_+$ und $v_2 \in V_-$ mit $v = v_1 + v_2$ gibt, so ist
+   \[
+    f(v) = f(v_1 + v_2) + f(v_1) + f(v_2) = v_1 - v_2.
+   \]
+   Dann sind
+   \[
+    v_1 = \frac{v + f(v)}{2} \quad \text{und} \quad v_2 = \frac{v - f(v)}{2}.
+   \]
+   Insbesondere sind $v_1$ und $v_2$ durch $v$ und $f$ schon eindeutig festgelegt. Dies zeigt die Eindeutigkeit.
+   
+   Zum Beweis der Existenz sei
+   \[
+    v_1 \coloneqq \frac{v + f(v)}{2} \quad \text{und} \quad v_2 \coloneqq \frac{v - f(v)}{2}.
+   \]
+   Dann ist $v = v_1 + v_2$ und da
+   \begin{gather*}
+    f(v_1) = \frac{f(v) + f^2(v)}{2} = \frac{f(v) + v}{2} = \frac{v + f(v)}{2} = v_1
+   \shortintertext{und}
+    f(v_2) = \frac{f(v) - f^2(v)}{2} = \frac{f(v) - v}{2} = -\frac{v - f(v)}{2} = -v_2
+   \end{gather*}
+   ist $v_1 \in V_+$ und $v_2 \in V_-$.
+ \end{enumerate}
+\end{solution}
+
+
+
+
+
+
+
+
+
+

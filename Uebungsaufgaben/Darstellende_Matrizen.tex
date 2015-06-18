@@ -1,0 +1,190 @@
+\section{Darstellende Matrizen}
+
+
+\begin{question}
+ Es sei
+ \[
+  A =
+  \begin{pmatrix*}[r]
+    2 & -3 \\
+   -1 &  4
+  \end{pmatrix*}
+  \in \Mat_2(\R).
+ \]
+ Bestimmen Sie die darstellende Matrix der linearen Abbildung
+ \[
+  F \colon \Mat_2(\R) \to \Mat_2(\R), B \mapsto A \cdot B
+ \]
+ bezüglich der Basis $\mc{B} \coloneqq (E_{11}, E_{12}, E_{21}, E_{22})$ von $\Mat_2(\R)$ mit den Matrizen
+ \[
+  E_{11} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix},\;
+  E_{12} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},\;
+  E_{21} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},\;
+  E_{22} = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}.
+ \]
+\end{question}
+\begin{solution}
+ Es ist
+ \begin{align*}
+  F(E_{11})
+  &= A \cdot E_{11}
+  = \begin{pmatrix*}[r] 2 & -3 \\ -1 & 4 \end{pmatrix*} \cdot \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+  = \begin{pmatrix*}[r] 2 & 0 \\ -1 & 0 \end{pmatrix*} = 2 E_{11} - E_{21}, \\
+  F(E_{12})
+  &= A \cdot E_{12}
+  = \begin{pmatrix*}[r] 2 & -3 \\ -1 & 4 \end{pmatrix*} \cdot \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+  = \begin{pmatrix*}[r] 0 & 2 \\ 0 & -1 \end{pmatrix*} = 2 E_{12} - E_{22}, \\
+  F(E_{21})
+  &= A \cdot E_{21}
+  = \begin{pmatrix*}[r] 2 & -3 \\ -1 & 4 \end{pmatrix*} \cdot \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+  = \begin{pmatrix*}[r] -3 & 0 \\ 4 & 0 \end{pmatrix*} = -3 E_{11} + 4E_{21}, \\
+  F(E_{22})
+  &= A \cdot E_{22}
+  = \begin{pmatrix*}[r] 2 & -3 \\ -1 & 4 \end{pmatrix*} \cdot \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+  = \begin{pmatrix*}[r] 0 & -3 \\ 0 & 4 \end{pmatrix*} = -3 E_{12} + 4E_{22}.
+ \end{align*}
+ Also ist
+ \[
+  \DM_\mc{B}(F) =
+  \begin{pmatrix}
+    2 &  0 & -3 &  0 \\
+    0 &  2 &  0 & -3 \\
+   -1 &  0 &  4 &  0 \\
+    0 & -1 &  0 &  4
+  \end{pmatrix}.
+ \]
+\end{solution}
+
+
+\begin{question}
+ Für $z \in \C$ sei
+ \[
+  L_z \colon \C \to \C, w \mapsto z w
+ \]
+ die Multiplikation mit $z$.
+ \begin{enumerate}
+  \item
+   Zeigen Sie für alle $z \in \C$, dass $L_z$ eine $\R$-lineare Abbildung ist.
+  \item
+   Es sei $z \in \C$. Geben Sie die darstellende Matrix von $L_z$ bezüglich der $\R$-Basis $\mc{B} \coloneqq (1,i)$ von $\C$ an, d.h.\ $\DM_\mc{B}(L_z)$.
+  \item
+   Zeigen Sie, dass die Abbildung $\Phi \colon \C \to \Mat_2(\R), z \mapsto \DM_\mc{B}(L_z)$ injektiv ist.
+  \item
+   Zeigen Sie, dass $\Phi(1) = I_2$ und dass für alle $z, w \in \C$
+   \[
+    \Phi(z+w) = \Phi(z) + \Phi(w)
+    \quad \text{und} \quad
+    \Phi(z \cdot w) = \Phi(z) \cdot \Phi(w).
+   \]
+  \item
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Für alle $w, w_1, w_2 \in \C$ und $\lambda \in \C$ ist
+   \[
+    L_z(\lambda w) = z \lambda w = \lambda z w = \lambda L_z(w)
+   \]
+   und
+   \[
+    L_z(w_1 + w_2) = z(w_1 + w_2) = z w_1 + z w_2 = L_z(w_1) + L_z(w_2),
+   \]
+   also ist $L_z$ eine $\C$-lineare Abbildung. Insbesondere ist $L_z$ deshalb auch $\R$-linear.
+  \item
+   Es sei $a \coloneqq \Re(z)$ und $b \coloneqq \Im(z)$, also $z = a + bi$ mit $a, b \in \R$. Dann ist
+   \begin{gather*}
+    L_z(1) = z \cdot 1 = z = a + b i
+   \shortintertext{und}
+    L_z(i) = z \cdot i = (a + i b) \cdot i = -b + i a.
+   \end{gather*}
+   Die darstellende Matrix von $L_z$ bezüglich der Basis $\mc{B}$ ist deshalb
+   \[
+    \DM_\mc{B}(L_z) =
+    \begin{pmatrix}
+     a & -b \\
+     b &  a \\
+    \end{pmatrix}.
+   \]
+  \item
+   Es seien $z, z' \in \R$ mit $z = a + i b$ und $z' = a' + i b'$ mit $a, b, a', b' \in \R$. Ist $z \neq z'$, so ist $a \neq a'$ oder $b \neq b'$. Dann sind auch
+   \[
+    \DM_\mc{B}(L_z) =
+    \begin{pmatrix}
+     a & -b \\
+     b &  a \\
+    \end{pmatrix}
+    \quad\text{und}\quad
+    \DM_\mc{B}(L_{z'}) =
+    \begin{pmatrix}
+     a' & -b' \\
+     b' &  a' \\
+    \end{pmatrix}
+   \]
+   verschieden. Also ist $\Phi$ injektiv.
+   
+   Die Aussage lässt sich auch konzeptioneller beweisen: $\Phi$ lässt sich als Komposition
+   \[
+    \Phi \colon
+    \C
+    \xlongrightarrow[z \mapsto L_z]{\Phi_1}
+    \Hom_\R(\C,\C)
+    \xlongrightarrow[f \mapsto \DM_\mc{B}(f)]{\Phi_2}
+    \Mat_2(\R)
+   \]
+   schreiben. Die Abbildung $\Phi_1 \colon \C \to \C, z \mapsto L_z$ ist injektiv, denn für $z, z' \in \C$ mit $L_z = L_{z'}$ ist
+   \[
+    z = L_z(1) = L_{z'}(1) = z'.
+   \]
+   Von der Abbildung $\Hom_\R(\C,\C) \to \Mat_2(\R)$, $f \mapsto \DM_\mc{B}(f)$ ist aus der Vorlesung bekannt, dass sie eine Bijektion ist (und sogar ein Isomorphismus von $\R$-Vektorräumen). Damit ist $\Phi$ als Verknüpfung zweier injektiver Funktionen ebenfalls injektiv.
+  \item
+   Die Aussage lässt sich durch direktes Nachrechnen zeigen: Für $z, w \in \C$ mit $z = a + i b$ und $w = u + i v$ mit $a,b,u,v \in \R$ ist $z + w = (a + u) + i (b + w)$ und daher
+   \begin{align*}
+    \Phi(z) + \Phi(w)
+    &= \DM_\mc{B}(L_z) + \DM_\mc{B}(L_w)
+    = \begin{pmatrix} a & -b \\ b & a \end{pmatrix} + \begin{pmatrix} u & -v \\ v & u \end{pmatrix} \\
+    &= \begin{pmatrix} a + u & -(b + v) \\ b + v & a + u \end{pmatrix} 
+    = \DM_\mc{B}(L_{z+w})
+    = \Phi(z+w).
+   \end{align*}
+   Außerdem ist $z \cdot w = (a u - b v) + i (a v + b u)$ und deshalb
+   \begin{align*}
+    \Phi(z) \cdot \Phi(w)
+    &= \DM_\mc{B}(L_z) \cdot \DM_\mc{B}(L_w)
+    = \begin{pmatrix} a & -b \\ b & a \end{pmatrix} \cdot \begin{pmatrix} u & -v \\ v & u \end{pmatrix} \\
+    &= \begin{pmatrix} a u - b v & - (a v + b u) \\ a v + b u & a u - b v \end{pmatrix} 
+    = \DM_\mc{B}(L_{z+w})
+    = \Phi(z \cdot w).
+   \end{align*}
+   
+   Die Aussage lässt sich auch konzeptioneller zeigen: Für $z, w \in \C$ ist $L_{z + w} = L_z + L_w$, da für alle $\xi \in \C$
+   \[
+    L_{z+w}(\xi) = (z+w) \xi = z \xi + w \xi = L_z(\xi) + L_w(\xi) = (L_z + L_w)(\xi)
+   \]
+   und $L_{zw} = L_z \circ L_w$, da für alle $\xi \in \C$
+   \[
+    L_{zw}(\xi) = z w \xi = L_z(w \xi) = L_z( L_w(\xi) ) = (L_z \circ L_w)(\xi).
+   \]
+   Aus der Vorlesung ist auch bekannt, dass für alle $f, g \in \Hom_\R(\C,\C)$
+   \[
+    \DM_\mc{B}(f + g) = \DM_\mc{B}(f) + \DM_\mc{B}(g)
+    \quad\text{und}\quad
+    \DM_\mc{B}(f \circ g) = \DM_\mc{B}(f) \cdot \DM_\mc{B}(g).
+   \]
+   Für alle $z, w \in \C$ ist dehalb
+   \begin{align*}
+    \Phi(z+w)
+    &= \DM_\mc{B}(L_{z+w})
+    = \DM_\mc{B}(L_z + L_w) \\
+    &= \DM_\mc{B}(L_z) + \DM_\mc{B}(L_w)
+    = \Phi(z) + \Phi(w)
+   \shortintertext{sowie}
+    \Phi(z \cdot w)
+    &= \DM_\mc{B}(L_{z \cdot w})
+    = \DM_\mc{B}(L_z \circ L_w) \\
+    &= \DM_\mc{B}(L_z) \cdot \DM_\mc{B}(L_w)
+    = \Phi(z) \cdot \Phi(w).
+   \end{align*}
+ \end{enumerate}
+\end{solution}
+

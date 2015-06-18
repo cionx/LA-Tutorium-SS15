@@ -1,0 +1,165 @@
+\section{Vektorräume}
+
+
+\begin{question}
+ Es sei $V$ ein $k$-Vektorraum, $\lambda \in k$ und $v \in V$ mit $\lambda v = 0$. Zeigen Sie, dass $\lambda = 0$ oder $v = 0$.
+\end{question}
+\begin{proof}
+ Ist $\lambda \neq 0$, so ist
+ \[
+  v = 1 \cdot v = \lambda^{-1} \cdot \lambda \cdot v = \lambda^{-1} \cdot 0 = 0.
+ \]
+\end{proof}
+
+
+
+
+\begin{question}
+ Es seien $V$ und $W$ zwei $k$-Vektorräume. Zeigen Sie dass
+ \[
+  V \times W = \{(v,w) \mid v \in V, w \in W\}
+ \]
+ zusammen mit der Addition
+ \[
+  (v_1,w_1) + (v_2,w_2) = (v_1+v_2, w_1+w_2)
+  \quad \text{für alle $(v_1, w_1), (v_2, w_2) \in V \times W$}
+ \]
+ und Skalarmultiplikation
+ \[
+  \lambda \cdot (v,w) = (\lambda v, \lambda w)
+  \quad \text{für alle $\lambda \in k$, $(v,w) \in V \times W$}
+ \]
+ ebenfalls ein $k$-Vektorraum ist.
+\end{question}
+\begin{solution}
+ Für alle $(v,w), (v',w'), (v'',w'') \in V \times W$ ist
+ \begin{align*}
+   &\, ((v, w) + (v', w')) + (v'', w'') \\
+  =&\, (v + v', w + w') + (v'', w'') \\
+  =&\, (v + v' + v'', w + w' + w'') \\
+  =&\, (v, w) + (v' + v'', w' + w'') \\
+  =&\, (v, w) + ((v', w') + (v'', w'')),
+ \end{align*}
+ also ist die Addition assoziativ. Da für alle $(v,w), (v',w') \in V \times W$
+ \[
+  (v, w) + (v', w') = (v + v', w + w') = (v' + v, w' + w) = (v', w') + (v, w)
+ \]
+ ist die Addition kommutativ. Da für alle $(v, w) \in V \times W$ ist
+ \begin{align*}
+  (v, w) + (0, 0) &= (v + 0, w + 0) = (v, w) \text{ und}\\
+  (0, 0) + (v, w) &= (0 + v, 0 + w) = (v, w).
+ \end{align*}
+ Also ist $(0, 0)$ neutral bezüglich der Addition. Da für alle $(v, w) \in V \times W$
+ \[
+  (v, w) + (-v, -w) = (v-v, w-w) = (0, 0)
+ \]
+ ist jedes Element aus $V \times W$ invertierbar bezüglich der Addition. Dies zeigt, dass $V \times W$ bezüglich der Addition eine abelsche Gruppe bildet.
+ 
+ Für alle $\lambda \in k$ und $(v, w), (v', w') \in V \times W$ ist
+ \begin{align*}
+  \lambda \cdot ((v, w) + (v', w'))
+  &= \lambda \cdot (v + v', w + w')
+  = (\lambda (v + v'), \lambda (w + w')) \\
+  &= (\lambda v + \lambda v', \lambda w + \lambda w')
+  = (\lambda v, \lambda w) + (\lambda v', \lambda w') \\
+  &= \lambda (v, w) + \lambda (v', w'),
+ \end{align*}
+ für alle $\lambda, \mu \in k$ und $(v, w) \in V \times W$ ist
+ \begin{align*}
+  (\lambda + \mu) (v, w)
+  &= ((\lambda + \mu) v, (\lambda + \mu) w)
+  = (\lambda v + \mu v, \lambda w + \mu w) \\
+  &= (\lambda v, \lambda w) + (\mu v, \mu w)
+  = \lambda (v, w) + \mu (v, w)
+ \end{align*}
+ sowie
+ \begin{align*}
+  (\lambda \mu) (v, w)
+  = ((\lambda \mu) v, (\lambda \mu) w)
+  = (\lambda (\mu v), \lambda (\mu w))
+  = \lambda (\mu v, \mu w)
+  = \lambda (\mu (v, w)).
+ \end{align*}
+ Außerdem ist
+ \[
+  1 \cdot (v, w)
+  = (1 \cdot v, 1 \cdot w)
+  = (v, w).
+ \]
+ 
+ Insgesamt zeigt dies, dass $V \times W$ zusammen mit der Addition und Skalarmultiplikation ein $k$-Vektorraum ist.
+\end{solution}
+
+
+\begin{question}
+ Es sei $V$ ein Vektorraum und $U_1, U_2 \subseteq V$ seien Untervektorräume. Zeigen Sie, dass auch $U_1 \cap U_2$ ein Untervektorraum von $V$ ist.
+\end{question}
+\begin{solution}
+ Da $U_1$ und $U_2$ Untervektorräume sind ist $0 \in U_1$ und $0 \in U_2$ und damit auch $0 \in U_1 \cap U_2$.
+ 
+ Für $v,w \in U_1 \cap U_2$ ist $v,w \in U_1$ und $v,w \in U_2$. Da $U_1$ und $U_2$ Untervektorräume sind ist damit auch $v+w \in U_1$ und $v+w \in U_2$. Also ist auch $v+w \in U_1 \cap U_2$.
+ 
+ Es sei $\lambda \in k$ und $v \in U_1 \cap U_2$. Dann ist $v \in U_1$ und $v \in U_2$, und da $U_1$ und $U_2$ Untervektorräume sind ist dann auch $\lambda v \in U_1$ und $\lambda v \in U_2$. Damit ist auch $\lambda v \in U_1 \cap U_2$.
+ 
+ Insgesamt zeigt dies, dass $U_1 \cap U_2$ ein Untervektorraum ist.
+\end{solution}
+
+
+\begin{question}
+ Es sei $V$ ein Untervektorraum und $U_1, U_2 \subseteq V$ seien Untervektorräume. Zeigen Sie, dass auch
+ \[
+  U \coloneqq \{v + w \mid v \in U_1, w \in U_2\}
+ \]
+ ein Untervektorraum von $V$ ist.
+\end{question}
+\begin{solution}
+ Da $U_1$ und $U_2$ Untervektorräume sind ist $0 \in U_1$ und $0 \in U_2$. Damit ist $0 = 0 + 0 \in U$.
+ 
+ Es seien $v, w \in U$. Da $v \in U$ gibt es $v_1 \in U_1$ und $v_2 \in U_2$ mit $v = v_1 + v_2$, und da $w \in U$ gibt es $w_1 \in U_1$ und $w_2 \in U_2$ mit $w = w_1 + w_2$. Da $U_1$ und $U_2$ Untervektorräume sind ist auch $v_1 + w_1 \in U_1$ und $v_2 + w_2 \in U_2$. Es ist also
+ \[
+  v + w
+  = (v_1 + v_2) + (w_1 + w_2)
+  = \underbrace{v_1 + w_1}_{\in U_1} + \underbrace{v_2 + w_2}_{\in U_2}
+  \in U.
+ \]
+ 
+ Es sei $\lambda \in k$ und $v \in U$. Dann gibt es $v_1 \in U_1$ und $v_2 \in U_2$ mit $v = v_1 + v_2$. Da $U_1$ und $U_2$ Untervektorräume sind ist auch $\lambda v_1 \in U_1$ und $\lambda v_2 \in U_2$. Damit ist auch
+ \[
+  \lambda v
+  = \lambda (v_1 + v_2)
+  = \underbrace{\lambda v_1}_{\in U_1} + \underbrace{\lambda v_2}_{\in U_2}
+  \in U.
+ \]
+ 
+ Ingesamt zeigt dies, dass $U$ ein Untervektorraum ist.
+\end{solution}
+
+
+\begin{question}
+ Es sei $V$ ein Vektorraum und $U \subseteq V$ ein Untervektorraum. Für $v,w \in V$ sei
+ \[
+  v \sim w \Leftrightarrow v - w \in U.
+ \]
+ Zeigen Sie, dass $\sim$ eine Äquivalenzrelation auf $V$ definiert.
+\end{question}
+\begin{solution}
+ Für jeden Vektor $v \in V$ ist $v-v = 0 \in U$, da $U$ ein Untervektorraum ist. Also ist $\sim$ reflexiv.
+ 
+ Es seien $v, w \in V$ mit $v \sim w$. Dann ist $v-w \in U$. Da $U$ ein Untervektorraum ist, ist dann auch
+ \[
+  w-v = -(v-w) = (-1) \cdot (v-w) \in U,
+ \]
+ also $w \sim v$. Das zeigt, dass $\sim$ symmetrisch ist.
+ 
+ Es seien $v_1, v_2, v_3 \in V$ mit $v_1 \sim v_2$ und $v_2 \sim v_3$. Dann ist $v_1 - v_2 \in U$ und $v_2 - v_3 \in U$. Da $U$ ein Untervektorraum ist, ist damit auch
+ \[
+  v_1 - v_3 = (v_1 - v_2) + (v_2 - v_3) \in U,
+ \]
+ also $v_1 \sim v_3$. Das zeigt, dass $\sim$ transitiv ist.
+ 
+ Insgesamt zeigt dies, dass $\sim$ eine Äquivalenzrelation ist.
+\end{solution}
+
+
+
+

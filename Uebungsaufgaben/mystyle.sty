@@ -1,0 +1,46 @@
+\usepackage{amsmath} % math stuff
+\usepackage{amssymb} % math stuff
+\usepackage{amsthm} % math stuff
+\usepackage{mathtools} % math stuff
+\usepackage[ngerman]{babel} % Es ist Deutschland hier.
+\usepackage{enumitem} % for better enumerates
+\usepackage{xltxtra} % xelatex
+\usepackage{ellipsis} % right ellipsis when using \dots, include after xltxtra
+\usepackage{exsheets}
+\usepackage{extarrows}
+
+\setlist[enumerate,1]{leftmargin=*} % deletes some leftmargin from enumerates
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thrm}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{beh}{Behauptung}
+\newtheorem*{bem}{Bemerkung}
+\newtheorem*{bsp}{Beispiel}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Lv}{\mathcal{L}}
+
+\newcommand{\mc}[1]{\mathcal{#1}}
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Mat}{M}
+
+\DeclareMathOperator{\DM}{DM}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+
+\newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+\newenvironment{lgs}[1][c]{\left\{\setlength{\arraycolsep}{1pt}\begin{array}{#1}}{\end{array}\right.}

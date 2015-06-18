@@ -1,0 +1,361 @@
+\section{Matrizen}
+
+
+\begin{question}
+ Finden Sie eine Matrix $T \in \Mat_4(k)$, so dass für alle $A \in \Mat_n(k)$ das Matrixprodukt $A \cdot T$ durch vertauschen der ersten und dritten Spalte von $A$ entsteht. Ist $T$ eindeutig?
+\end{question}
+\begin{solution}
+ Falls eine solche Matrix $T$ existiert muss
+ \[
+  T = I \cdot T =
+  \begin{pmatrix}
+   0 & 0 & 1 & 0 \\
+   0 & 1 & 0 & 0 \\
+   1 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 1
+  \end{pmatrix}.
+ \]
+ Das zeigt die Eindeutigkeit und wie $T$ aussehen muss. Für alle
+ \[
+  A =
+  \begin{pmatrix}
+   a_{11} & a_{12} & a_{13} & a_{14} \\
+   a_{21} & a_{22} & a_{23} & a_{24} \\
+   a_{31} & a_{32} & a_{33} & a_{34} \\
+   a_{41} & a_{42} & a_{43} & a_{44}
+  \end{pmatrix}
+ \]
+ ist
+ \[
+  A \cdot T =
+  \begin{pmatrix}
+   a_{11} & a_{12} & a_{13} & a_{14} \\
+   a_{21} & a_{22} & a_{23} & a_{24} \\
+   a_{31} & a_{32} & a_{33} & a_{34} \\
+   a_{41} & a_{42} & a_{43} & a_{44}
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+   0 & 0 & 1 & 0 \\
+   0 & 1 & 0 & 0 \\
+   1 & 0 & 0 & 0 \\
+   0 & 0 & 0 & 1
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+   a_{13} & a_{12} & a_{11} & a_{14} \\
+   a_{23} & a_{22} & a_{21} & a_{24} \\ 
+   a_{33} & a_{32} & a_{31} & a_{34} \\
+   a_{43} & a_{42} & a_{41} & a_{44}.
+  \end{pmatrix},
+ \]
+ also erfüllt $T$ die gewünschte Eigenschaft.
+\end{solution}
+
+
+
+
+% TODO: Eigenschaften des Matrizenringes.
+
+
+\begin{question}
+ Für $A \in \Mat_n(k)$ sei
+ \[
+  L_A \colon \Mat_n(k) \rightarrow \Mat_n(k), B \mapsto A \cdot B.
+ \]
+ die Linksmultiplikation mit $A$. Zeigen Sie:
+ \begin{enumerate}
+  \item
+   Für alle $A \in \Mat_n(k)$ ist $L_A$ eine lineare Abbildung.
+  \item
+   Die Abbildung
+   \[
+    \Phi \colon \Mat_n(k) \rightarrow \End(\Mat_n(k)), A \mapsto L_A
+   \]
+   ist linear.
+  \item
+   $\Phi$ ist injektiv.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Da für alle $B_1, B_2 \in \Mat_n(k)$
+   \[
+    L_A(B_1 + B_2) = A (B_1 + B_2) = A B_1 + A B_2 = L_A(B_1) + L_A(B_2)
+   \]
+   ist $L_A$ additiv. Da für alle $\lambda \in k$, $B \in \Mat_n(k)$
+   \[
+    L_A(\lambda B) = A(\lambda B) = \lambda A B = \lambda L_A(B)
+   \]
+   ist $L_A$ mit der Skalarmultiplikation verträglich. Also ist $L_A$ linear.
+  \item
+   Für alle $A_1, A_2 \in \Mat_n(k)$ ist für alle $B \in \Mat_n(k)$
+   \begin{align*}
+    L_{A_1 + A_2}(B)
+    &= (A_1 + A_2) B
+    = A_1 B + A_2 B \\
+    &= L_{A_1}(B) + L_{A_2}(B)
+    = (L_{A_1} + L_{A_2})(B),
+   \end{align*}
+   und somit
+   \[
+    \Phi(A_1 + A_2) = L_{A_1 + A_2} = L_{A_1} + L_{A_2} = \Phi(A_1) + \Phi(A_2).
+   \]
+   Also ist $\Phi$ additiv.
+   
+   Für alle $\lambda \in k$, $A \in \Mat_n(k)$ ist für alle $B \in \Mat_n(k)$
+   \[
+    L_{\lambda A}(B) = (\lambda A) B = \lambda A B = \lambda L_A(B) = (\lambda L_A)(B)
+   \]
+   und somit
+   \[
+    \Phi(\lambda A) = L_{\lambda A} = \lambda L_A = \lambda \Phi(A).
+   \]
+   Also ist $\Phi$ mit der Skalarmultiplikation verträglich.
+  \item
+   Für $A, A' \in \Mat_n(k)$ mit $\Phi(A) = \Phi(A')$ ist
+   \[
+    A = A \cdot I = L_A(I) = \Phi(A)(I) = \Phi(A')(I) = L_{A'}(I) = A' \cdot I = A'.
+   \]
+   Also ist $\Phi$ injektiv.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es seien $A_1, \dotsc, A_r \in \Mat_n(k)$ und $A_1 \dotsm A_r$ sei invertierbar. Zeigen Sie, dass dann $A_i$ für alle $i=1, \dotsc, r$ invertierbar ist.
+\end{question}
+\begin{solution}
+ Die Aussage lässt sich per Induktion über $r$ beweisen: Für $r = 1$ ist die Aussage klar.
+ 
+ Angenommen, die Aussage gilt für $r \geq 1$, und es seien $A_1, \dotsc, A_{r+1} \in \Mat_n(k)$, so dass $S \coloneqq A_1 \dotsm A_{r+1}$ invertierbar ist. Für $x \in k^n$ mit $A_{r+1} x = 0$ ist auch
+ \[
+  S x = A_1 \dotsm A_{r+1} x = 0.
+ \]
+ Also ist
+ \[
+  \ker S \supseteq \ker A_{r+1}.
+ \]
+ Da $S$ invertierbar ist, ist $\ker S = 0$. Also ist auch $\ker A_{r+1} = 0$ und $A$ somit invertierbar.
+ 
+ Da $A_{r+1}$ invertierbar ist, lässt sich $A_1 \dotsm A_{r+1} = S$ durch Multiplikation mit $A_{r+1}^{-1}$ von rechts zu
+ \[
+  A_1 \dotsm A_r = S A_{r+1}^{-1} \eqqcolon T
+ \]
+ umformen. Da $S$ und $A_{r+1}^{-1}$ invertierbar sind, ist auch $T$ invertierbar. Nach Induktionsvoraussetzung sind daher auch $A_i$ für alle $i = 1, \dotsc, r$ invertierbar. Zusammen mit der Invertierbarkeit von $A_{r+1}$ ist als $A_i$ für alle $i = 1, \dotsc, r+1$ invertierbar.
+\end{solution}
+
+
+\begin{question}
+ Es sei
+ \[
+  A =
+  \begin{pmatrix*}[r]
+    2 & -4 &  6 &  4 & -2 \\
+   -1 &  2 & -3 & -2 &  1 \\
+   -3 &  6 & -9 & -6 &  3 \\
+    1 & -2 &  3 &  2 & -1 \\
+   -2 &  4 & -6 & -4 &  2
+  \end{pmatrix*}
+  \in \Mat(5 \times 5, \R).
+ \]
+ \begin{enumerate}
+  \item
+   Finden Sie Matrizen $B \in \Mat(5 \times 1, \R)$ und $C \in \Mat(1 \times 5, \R)$ mit $A = BC$.
+  \item
+   Berechnen Sie $A^{2016}$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Alle Spalten und Zeilen von $A$ sind Vielfache voneinander. Durch geschicktes Hinsehen ergibt sich für
+   \[
+    B \coloneqq
+   \begin{pmatrix}
+      2 \\
+     -1 \\
+     -3 \\
+      1 \\
+     -2
+    \end{pmatrix} \in \Mat(5 \times 1, \R)
+    \quad \text{und} \quad
+    C \coloneqq
+    \begin{pmatrix}
+     1 & -2 & 3 & 2 & -1
+    \end{pmatrix} \in \Mat(1 \times 5, \R),
+   \]
+   dass $A = BC$.
+  \item
+   Es ist
+   \[
+    CB = \begin{pmatrix}-1\end{pmatrix} \in \Mat_1(\R).
+   \]
+   Deshalb ist
+   \[
+    A^{2016} = (BC)^{2016} = B (CB)^{2015} C = B \begin{pmatrix}-1\end{pmatrix}^{2015} C = -BC = -A.
+   \]
+   Allgemeiner ist für alle $n \geq 1$
+   \[
+    A^n =
+    \begin{cases}
+      A & \text{falls $n$ ungerade ist}, \\
+     -A & \text{falls $n$ gerade ist}.
+    \end{cases}
+   \]
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Eine Matrix $A \in \Mat_n(k)$ heißt \emph{nilpotent} falls es ein $n \geq 1$ mit $A^n = 0$ gibt.
+ \begin{enumerate}
+  \item
+   Zeigen Sie, dass die folgenden Matrizen nilpotent sind:
+   \[
+    \begin{pmatrix}
+     0 & 1 \\
+     0 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+     0 & 0 \\
+     1 & 0 \\
+    \end{pmatrix},
+    \begin{pmatrix}
+     0 & 1 & 0 \\
+     0 & 0 & 1 \\
+     0 & 0 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+     0 & 0 & 0 \\
+     1 & 0 & 0 \\
+     0 & 1 & 0
+    \end{pmatrix}.
+   \]
+  \item
+   Zeigen Sie: Ist $\lambda \in k$ und $A \in \Mat_n(k)$ nilpotent, so ist auch $\lambda A$ nilpotent.
+  \item
+   Finden Sie zwei nilpotente Matrizen $A, B \in \Mat_2(k)$, so dass $A+B$ nicht nilpotent ist.
+  \item
+   Zeigen Sie: Sind $A,B \in \Mat_n(k)$ zwei nilpotente, kommutierende Matrizen (d.h.\ $AB = BA$), so ist auch $A+B$ nilpotent. (\emph{Hinweis}: Finden Sie einen Ausdruck für $(A+B)^n$.)
+  \item
+   Zeigen Sie: Ist $A \in \Mat_n(k)$ nilpotent, so ist $I_n - A$ invertierbar. (\emph{Hinweis}: Falls $A^2 = 0$ betrachten Sie $I_n + A$. Falls $A^3 = 0$ betrachten Sie $I_n + A + A^2$.)
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Durch Nachrechnen ergibt sich, dass
+   \[
+    \begin{pmatrix}
+     0 & 1 \\
+     0 & 0
+    \end{pmatrix}^2
+    = 0, 
+    \begin{pmatrix}
+     0 & 0 \\
+     1 & 0
+    \end{pmatrix}^2
+    = 0,
+    \begin{pmatrix}
+     0 & 1 & 0 \\
+     0 & 0 & 1 \\
+     0 & 0 & 0
+    \end{pmatrix}^3
+    =0
+    \quad \text{und} \quad
+    \begin{pmatrix}
+     0 & 0 & 0 \\
+     1 & 0 & 0 \\
+     0 & 1 & 0
+    \end{pmatrix}^3
+    = 0.
+   \]
+  \item
+   Für alle $B_1, B_2 \in \Mat_n(k)$ und $\mu_1, \mu_2 \in k$ ist
+   \[
+    (\mu_1 B_1) (\mu_2 B_2) = \mu_1 \mu_2 (B_1 B_2).
+   \]
+   Insbesondere ist deshalb
+   \[
+    (\lambda A)^n = \lambda^n A^n \quad \text{für alle $n \geq 1$}.
+   \]
+   Da $A$ nilpotent ist gibt es $n \geq 1$ mit $A^n = 0$. Dann ist
+   \[
+    (\lambda A)^n = \lambda^n A^n = \lambda^n 0 = 0.
+   \]
+   Also ist auch $\lambda A$ nilpotent.
+  \item
+   Die Matrizen
+   \[
+    A =
+    \begin{pmatrix}
+     0 & 1 \\
+     0 & 0
+    \end{pmatrix}
+    \quad \text{und} \quad
+    \begin{pmatrix}
+     0 & 0 \\
+     1 & 0
+    \end{pmatrix}
+   \]
+   sind nilpotent; es sei
+   \[
+    C \coloneqq A + B =
+    \begin{pmatrix}
+     0 & 1 \\
+     1 & 0
+    \end{pmatrix}.
+   \]
+   Durch Nachrechnen ergibt sich, dass $C^2 = I_2$. Es folgt, dass für alle $n \geq 1$
+   \[
+    C^n =
+    \begin{cases}
+     C   & \text{falls $n$ ungerade ist}, \\
+     I_2 & \text{falls $n$ gerade ist}.
+    \end{cases}
+   \]
+   Es gibt also kein $n \geq 1$ mit $C^n = 0$. Also ist $C$ nicht nilpotent.
+  \item
+   Da $A$ und $B$ nilpotent sind gibt es $n_A, n_B \geq 1$ mit $A^{n_A} = 0$ und $B^{n_B} = 0$. Es sei $n \coloneqq n_A + n_B$. Da $A$ und $B$ kommutieren gilt der Binomische Lehrsatz
+   \[
+    (A+B)^n = \sum_{\ell=0}^n \binom{n}{\ell} A^\ell B^{n-\ell}.
+   \]
+   Es ist $\ell \geq n_A$ oder $n-\ell \geq n_B$ für alle $\ell = 0, \dotsc, n$ da $n = n_A + n_B$. Also ist $A^\ell = 0$ oder $B^{n-\ell} = 0$ für alle $\ell = 0, \dotsc, n$. Es sind also alle Summanden $0$ und somit $(A+B)^n = 0$.
+  \item
+   Es sei $m \geq 1$ mit $A^m = 0$. Dann ist
+   \begin{align*}
+     &\, (I_n + A + A^2 + \dotsb + A^{m-1}) (I_n - A) \\
+    =&\, (I_n + A + A^2 + \dotsb + A^{m-1}) - (A + A^2 + A^3 + \dotsb + A^m) \\
+    =&\, I_n - A^m
+    = I_n.
+   \end{align*}
+   Also ist $I_n - A$ invertierbar mit $(I_n - A)^{-1} = I_n + A + A^2 + \dotsb + A^{m-1}$.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es sei $G \subseteq \Mat_n(k)$ eine Teilmenge, die bezüglich der Matrizenmultiplikation eine Gruppe ist. Zeigen oder widerlegen Sie: $G$ besteht aus invertierbaren Matrizen und $G \subseteq \GL_n(k)$ ist eine Untergruppe.
+\end{question}
+\begin{solution}
+ Die Aussage gilt nicht: Es sei $A \in \Mat_n(k)$ \emph{idempotent}, d.h.\ es ist $A^2 = A$. Dann ist $G \coloneqq \{A\} \subseteq \GL_n(k)$ eine Teilmenge, die bezüglich der Matrizenmultiplikation eine Gruppe bildet. Aber $A$ ist im Allgemeinen nicht invertierbar, siehe etwa
+ \[
+  A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \in \Mat_2(k).
+ \]
+ und die Nullmatrix $0 \in \Mat_n(k)$.
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+

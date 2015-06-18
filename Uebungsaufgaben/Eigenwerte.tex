@@ -1,0 +1,72 @@
+\section{Eigenwerte}
+
+
+\begin{question}
+ Es sei $V$ ein $k$-Vektorraum und $f \colon V \to V$ ein Endomorphismus.
+ \begin{enumerate}
+  \item
+   Definieren Sie für $\lambda \in k$ den Eigenraum $V_\lambda$ von $f$ zum Eigenwert $\lambda$, sowie Eigenvektoren von $f$ zum Eigenwert $\lambda$.
+  \item
+   Zeigen Sie, dass $V_\lambda$ für alle $\lambda \in k$ ein Untervektorraum ist.
+  \item
+   Zeigen Sie, dass $V_\lambda \cap V_\mu = 0$ für $\lambda \neq \mu$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Der Eigenraum $V_\lambda$ von $f$ zum Eigenwert $\lambda$ ist
+   \[
+    V_\lambda = \{v \in V \mid f(v) = \lambda v\}
+   \]
+   Ein Eigenvektor von $f$ zum Eigenwert $\lambda$ ist ein Vektor $v \in V \setminus \{0\}$ mit $f(v) = \lambda v$, also ein Element $v \in V_\lambda \setminus \{0\}$.
+  \item
+   Da $f$ und $\id_V$ linear sind ist auch $f - \lambda \id_V$ linear. Also ist
+   \[
+    V_\lambda
+    = \{v \in V \mid f(v) = \lambda v\}
+    = \{v \in V \mid (f - \lambda \id_V)(v) = 0\}
+    = \ker (f - \lambda \id_V)
+   \]
+   ein Untervektorraum.
+   
+   Alternativ lassen sich auch die Bedingungen eines Untervektorraumes nachrechnen: Da
+   \[
+    f(0) = 0 = \lambda \cdot 0
+   \]
+   ist $0 \in V_\lambda$. Für $v, w \in V_\lambda$ ist
+   \[
+    f(v + w) = f(v) + f(w) = \lambda v + \lambda w = \lambda (v + w),
+   \]
+   also auch $v + w \in V_\lambda$. Für $v \in V_\lambda$ und $\mu \in k$ ist
+   \[
+    f(\mu v) = \mu f(v) = \mu \lambda v = \lambda (\mu v),
+   \]
+   also auch $\mu v \in V_\lambda$. Damit sind alle Bedingungen eines Untervektorraumes erfüllt.
+  \item
+   Da $V_\lambda$ und $V_\mu$ Untervektorräume sind, ist auch $V_\lambda \cap V_\mu$ ein Untervektorraum. Daher ist $0 \subseteq V_\lambda \cap V_\mu$. Ist andererseits $v \in V_\lambda \cap V_\mu$, so ist
+   \[
+    \lambda v = f(v) = \mu v,
+   \]
+   und somit $(\lambda - \mu) v = 0$. Da $\lambda \neq \mu$ ist $\lambda - \mu \neq 0$. Aus $(\lambda - \mu) v = 0$ folgt damit, dass $v = 0$. Also ist auch $V_\lambda \cap V_\mu \subseteq 0$.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es sei $V$ ein $k$-Vektorraum und $f, g \colon V \to V$ seien zwei Endomorphismen von $V$, die kommutieren (d.h.\ $f \circ g = g \circ f$). Es sei $\lambda \in k$. Zeigen Sie, dass der Eigenraum $V_\lambda$ von $f$ zum Eigenraum $\lambda$invariant unter $g$ ist, d.h.\ dass $g(V_\lambda) \subseteq V_\lambda$.
+\end{question}
+\begin{proof}
+ Es sei $v \in V_\lambda$, also $f(v) = \lambda v$. Dann ist
+ \[
+  f(g(v)) = (f \circ g)(v) = (g \circ f)(v) = g(f(v)) = g(\lambda v) = \lambda g(v).
+ \]
+ Also ist auch $g(v) \in V_\lambda$.
+\end{proof}
+
+
+
+
+
+
+

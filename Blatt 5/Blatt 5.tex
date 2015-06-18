@@ -1,0 +1,257 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../mystyle}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\title{\textsc{Lösungen und Anmerkungen} \\ Serie 5}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Aufgabe 1 (b)}
+
+
+\begin{lem}\label{lem: linear independence for two vectors}
+ Es sei $V$ ein $K$-Vektorraum. Dann sind zwei Vektoren $v,w \in V$ genau dann linear abhängig, wenn sie skalare Vielfache sind, d.h.\ wenn $w = \lambda v$ oder $v = \lambda w$ für ein $\lambda \in K$.
+\end{lem}
+\begin{proof}
+ Angenommen $v$ und $w$ sind linear abhängig. Dann gibt es $\lambda, \mu \in K$ mit $\lambda v + \mu w = 0$ und $\lambda \neq 0$ oder $\mu \neq 0$. Wir können o.B.d.A.\ davon ausgehen, dass $\lambda = 0$, indem wir $v$ und $w$ gegebenenfalls vertauschen. Dann ist $v = -\mu/\lambda \cdot w$
+ 
+ Angenommen $v$ und $w$ sind skalare Vielfache; wir können o.B.d.A.\ davon ausgehen, dass $v = \lambda w$ für ein $\lambda \in K$, indem wir $v$ und $w$ gegebenenfalls vertauschen. Ist $\lambda = 0$ so ist $v = 0$; in diesem Fall sind $v$ und $w$ linear abhängig (denn jede Kollektion von Vektoren, die den Nullvektor enthält, ist linear abhängig). Ist $\lambda \neq 0$, so ist $v - \lambda w = 0$ eine nichttrivale Linearkombination des Nullvektors, also sind $v$ und $w$ auch in diesem Fall linear abhängig.
+\end{proof}
+
+
+Wir wollen nun untersüchen, mit welchen der kanonischen Basisvektoren $e_1$, $e_2$, $e_3$, $e_4$ von $\R^4$ man die beiden Vektoren
+\[
+ v = \vect{1 \\ -4 \\ 1 \\ 3} \quad \text{und} \quad w = \vect{-3 \\ 8 \\ 1 \\ 6}
+\]
+zu einer Basis von $\R^4$ ergänzen kann.
+
+Da $\R^4$ vierdimensional ist, besteht jede Basis von $\R^4$ aus genau vier Vektoren, die wegen ihrer linearen Unabhängigkeit paarweise verschieden seien müssen. Wir müssen also überprüfen, für welche $1 \leq i,j \leq 4$ mit $i \neq j$ die Kollektion $\{v,w,e_i,e_j\}$ eine (ungeordnete) Basis von $\R^4$ bilden. Dabei genügt es offenbar die Fälle $i < j$ zu betrachten.
+
+Ist die Kollektion $\{v,w,e_i,e_j\}$ linear unabhängig, so ist $\Lv(v,w,e_i,e_j) \subseteq \R^4$ ein vierdimensionaler Untervektorraum, also bereits $\Lv(v,w,e_i,e_j) = \R^4$. Dann ist $\{v,w,e_i,e_j\}$ bereits ein Erzeugendensystem von $\R^4$ und somit zusammen mit der linearen Unabhängigkeit eine Basis von $\R^4$.
+
+Wir müssen also nur untersuchen, für welche $1 \leq i, j \leq 4$ mit $i < j$ die Kollektion $\{v,w,e_i,e_j\}$ linear unabhängig ist.
+
+Um nicht alle sechs Möglichkeiten durch längliche lineare Gleichungssysteme überprüfen zu müssen, werden wir einen allgemeinen Lösungsweg zu entwickeln. Unser Ziel ist, die lineare Unabhängigkeit der vier Vektoren $v$, $w$, $e_i$, $e_j$ auf die von zwei anderen Vektoren zu reduzieren, die wir dann durch Lemma \ref{lem: linear independence for two vectors} einfach untersuchen können.
+
+\begin{bsp}
+ \begin{enumerate}[label=\alph*)]
+  \item\label{enum: small to big}
+   Um ein allgemeines Vorgehen zu entwickeln betrachten wir zunächst den Sonderfall $i = 1$, $j = 2$. Wir wollen also überprüfen, ob $\{v,w,e_1,e_2\}$ linear unabhängig ist. Seien also $\lambda_1, \lambda_2, \lambda_3, \lambda_4 \in \R$ mit
+   \begin{equation}\label{eqn: linear combination of 0 example}
+    \lambda_1 v + \lambda_2 w + \lambda_3 e_1 + \lambda_4 e_2 = 0.
+   \end{equation}
+   Wir erhalten für die Koeffizienten $\lambda_1$, $\lambda_2$, $\lambda_3$, $\lambda_4$ das homogene lineare Gleichungssystem
+   \begin{equation}\label{eqn: bigger lgs example}
+    \begin{pmatrix*}[r]
+      1 & -3 & 1 & 0 \\
+     -4 &  8 & 0 & 1 \\
+      1 &  1 & 0 & 0 \\
+      3 &  6 & 0 & 0
+    \end{pmatrix*}.
+   \end{equation}
+   Betrachten wir nun die dritte und vierte Zeile des LGS (also genau die Zeilen, auf die $e_1$ und $e_2$ keinen Einfluss haben), so erhalten wir für $\lambda_1$ und $\lambda_2$ das lineare Gleichungssystem
+   \begin{equation}\label{eqn: smaller lgs example}
+    \begin{lgs}[rcrcr]
+      \lambda_1 & + &  \lambda_2 & = & 0, \\
+     3\lambda_1 & + & 6\lambda_2 & = & 0,
+    \end{lgs}
+    \quad
+    \text{also}
+    \quad
+    \lambda_1 \vect{1 \\ 3} + \lambda_2 \vect{1 \\ 6} = 0.
+   \end{equation}
+   
+   Die beiden Vektoren $(1,3)$ und $(1,6)$ sind keine skalaren Vielfachen, also sind sie nach Lemma \ref{lem: linear independence for two vectors} linear unabhängig. Aus \eqref{eqn: smaller lgs example} folgt damit, dass $\lambda_1 = \lambda_2 = 0$. Damit vereinfacht sich \eqref{eqn: linear combination of 0 example} zu $\lambda_3 e_1 + \lambda_4 e_2 = 0$, woraus wegen der linearen Unabhängigkeit der kanonischen Basisvektoren folgt, dass $\lambda_3 = \lambda_4 = 0$.
+   
+   Insgesamt ist also $\lambda_1 = \lambda_2 = \lambda_3 = \lambda_4 = 0$. Also ist $\{v,w,e_1,e_2\}$ linear unabhängig.
+   
+  \item\label{enum: big to small}
+   Wir wollen noch einen kleinen Schritt weiter gehen: Wir haben mithilfe der linearen Unabhängigkeit der beiden Vektoren $(1,3)$ und $(1,6)$ die lineare Unabhängigkeit von $\{v,w,e_1,e_2\}$ gefolgert. Man kann aber auch umgekehrt aus der linearen Unabhängigkeit von $\{v,w,e_1,e_2\}$ die lineare Unabhängigkeit von $(1,3)$ und $(1,6)$ folgern: Wären nämlich $(1,3)$ und $(1,6)$ linear abhängig, so gebe es $\lambda_1, \lambda_2 \in \R$ mit
+   \begin{equation}\label{eqn: small linear dependence example}
+    \lambda_1 \vect{1 \\ 3} + \lambda_2 \vect{1 \\ 6} = 0
+   \end{equation}
+   und $\lambda_1 \neq 0$ oder $\lambda_2 \neq 0$. Dann wäre
+   \begin{equation}\label{eqn: big linear dependence example}
+    \begin{aligned}
+     0
+     &= \lambda_1 \vect{0 \\ 0 \\ 1  \\ 3} + \lambda_2 \vect{0 \\ 0 \\ 1 \\ 6} \\
+     &= \lambda_1 \vect{1 \\ -4 \\ 1 \\ 3} + \lambda_2 \vect{-3 \\ 8 \\ 1 \\ 6} - (\lambda_1 - 3 \lambda_2) \vect{1 \\ 0 \\ 0 \\ 0}
+       - (-4 \lambda_1 + 8 \lambda_2) \vect{0 \\ 1 \\ 0 \\ 0} \\
+     &= \lambda_1 v + \lambda_2 w - (\lambda_1 - 3 \lambda_2) e_1 - (-4 \lambda_1 + 8 \lambda_2) e_2
+    \end{aligned}
+   \end{equation}
+   eine nichttriviale Linearkombination des Nullvektors durch $\{v,w,e_1,e_2\}$ (denn $\lambda_1 \neq 0$ oder $\lambda_2 \neq 0$), so dass die Kollektion nicht linear unabhängig wäre.
+   
+  \item
+   In \ref{enum: small to big} sind wir nach dem folgenden Muster vorgegangen: Zunächst betrachten wir in \eqref{eqn: linear combination of 0 example} eine beliebige Linearkombination des Nullvektors aus den vier Vektoren $v$,$w$,$e_1$,$e_2$. Damit erhalten wir das lineare Gleichungssystem \eqref{eqn: bigger lgs example} für die entsprechenden Koeffizienten $\lambda_1$, $\lambda_2$, $\lambda_3$, $\lambda_4$. Indem wir die besondere Form der Basisvektoren $e_1$ und $e_2$ nutzen (dass sie $0$ als dritten und vierten Eintrag haben) ergibt sich aus \eqref{eqn: bigger lgs example} das kleinere lineare Gleichungssystem \eqref{eqn: smaller lgs example} für die beiden Koeffizienten $\lambda_1$ und $\lambda_2$. Mithilfe von Lemma \ref{lem: linear independence for two vectors} können wir aus der linearen Unabhängigkeit von $(1,3)$ und $(1,6)$ direkt folgern, dass $\lambda_1 = \lambda_2 = 0$. Aus der linearen Unabhängigkeit von $e_1$ und $e_2$ können wir dann weiter folgern, dass auch $\lambda_3 = \lambda_4 = 0$.
+   
+   Wir können also wegen der besonderen Form der kanonischen Basisvektoren $e_1$ und $e_2$ aus der linearen Unabhängigkeit von $(1,3)$ und $(1,6)$ die lineare Unabhängigkeit von $\{v,w,e_1,e_2\}$ folgern. Wir haben in \ref{enum: big to small} gesehen, dass es sich hierbei schon um eine Äquivalenz handelt, dass also die lineare Unabhängigkeit von $\{v,w,e_1,e_2\}$ äquivalent zu der von $(1,3)$ und $(1,6)$ ist.
+   
+   Insgesamt haben wir also die lineare Unabhängigkeit der vier Vektoren \mbox{$v$, $w$, $e_i$, $e_j$} auf die der beiden Vektoren $(1,3)$ und $(1,6)$ reduziert, die wir durch Lemma \ref{lem: linear independence for two vectors} sehr einfach überprüfen können.
+ \end{enumerate}
+\end{bsp}
+
+
+Das obige Vorgehen können wir nun nutzen, um alle Fälle $1 \leq i,j \leq n$, $i < j$ gleichzeitig zu untersuchen. Hierfür bezeichne im Folgenden $v_i$, bzw.\ $w_i$ den $i$-ten Eintrag von $v$, bzw.\ $w$. Es ist etwa $v_1 = 1$, $v_2 = -4$ und $w_4 = 6$. Analog schreiben wir $e_{it}$ für den $t$-ten Eintrag des $i$-ten kanonischen Basisvektors $e_i$. Es ist also
+\begin{equation}\label{eqn: entries of standard basis vectors}
+ e_{it} =
+ \begin{cases}
+  1 & \text{falls $i = t$}, \\
+  0 & \text{falls $i \neq t$},
+ \end{cases}
+ \quad
+ \text{für alle $t=1,2,3,4$}.
+\end{equation}
+
+
+Wir fixieren für unser Vorgehen zwei beliebige Indizes $1 \leq i,j \leq 4$ mit $i < j$ (im Beispiel $i = 1$ und $j = 2$). Es seien $k, l \in \{1,2,3,4\}$ mit $k < l$ die beiden komplementären Indizes, d.h.\ $\{i,j,k,l\} = \{1,2,3,4\}$ (im Beispiel $k = 3$, $l = 4$). Da $k$ und $l$ genau die komplementären Indizes zu $i$ und $j$ sind ergibt sich aus \eqref{eqn: entries of standard basis vectors}, dass
+\begin{equation}\label{eqn: zero entries in the standard basis vectors}
+ e_{ik} = e_{il} = e_{jk} = e_{jl} = 0.
+\end{equation}
+(Im Beispiel ist $e_{13} = e_{14} = e_{23} = e_{34} = 0$.)
+
+Herzstück unseres Vorgehens ist die folgende Beobachtung:
+
+\begin{prop}\label{prop: everything in abstract}
+ Die Kollektion $\{v,w,e_i,e_j\}$ ist genau dann linear unabhängig, wenn die beiden Vektoren $(v_k, v_l)$ und $(w_k,w_l)$ linear unabhängig sind.
+\end{prop}
+
+Dan Beweis der Proposition läuft nun analog zum obigen Beispiel und entsteht aus diesem durch den Einsatz von mehr Variablen.
+
+\begin{proof}
+ Angenommen $(v_k, v_l)$ und $(w_k, w_l)$ sind linear unabhängig (im Beispiel ist dies die lineare Unabhängigkeit von $(1,3)$ und $(1,6)$). Es seien $\lambda_1, \lambda_2, \lambda_3, \lambda_4 \in \R$ mit
+ \begin{equation}\label{eqn: linear combination of 0 abstract}
+  \lambda_1 v + \lambda_2 w + \lambda_3 e_i + \lambda_4 e_j = 0.
+ \end{equation}
+ (Vergleiche mit \eqref{eqn: linear combination of 0 example}.)
+ Für die Koeffizienten $\lambda_1$, $\lambda_2$, $\lambda_3$, $\lambda_4$ erhalten wir somit das folgende homogene lineare Gleichungssystem
+  \begin{equation}\label{eqn: bigger lgs abstract}
+  \begin{pmatrix*}[r]
+    1 & -3 & e_{i1} & e_{j1} \\
+   -4 &  8 & e_{i2} & e_{j2} \\
+    1 &  1 & e_{i3} & e_{j3} \\
+    3 &  6 & e_{i4} & e_{j4}
+  \end{pmatrix*}.
+ \end{equation}
+ (Vergleiche mit \eqref{eqn: bigger lgs example}.) Wegen \eqref{eqn: zero entries in the standard basis vectors} ergibt sich aus der $k$-ten und $l$-ten Zeile für die beiden Koeffizienten $\lambda_1$ und $\lambda_2$ das lineare Gleichungssystem
+ \begin{equation}\label{eqn: smaller lgs abstract}
+  \begin{lgs}[rcrcr]
+   v_k \lambda_1 & + & w_k \lambda_2 & = & 0, \\
+   v_l \lambda_1 & + & w_l \lambda_2 & = & 0,
+  \end{lgs}
+  \quad
+  \text{also}
+  \quad
+  \lambda_1 \vect{v_k \\ v_l} + \lambda_2 \vect{w_k \\ w_l} = 0.
+ \end{equation}
+ (Vergleiche mit \eqref{eqn: smaller lgs example}.) Da $(v_k, v_l)$ und $(w_k, w_l)$ nach Annahme linear unabhängig sind, folgt $\lambda_1 = \lambda_2 = 0$. Damit vereinfacht sich \eqref{eqn: linear combination of 0 abstract} zu $\lambda_3 e_i + \lambda_4 e_j = 0$. Aus der linearen Unabhängigkeit von $e_i$ und $e_j$ folgt, dass $\lambda_3 = \lambda_4 = 0$. Ingesamt ist daher $\lambda_1 = \lambda_2 = \lambda_3 = \lambda_4 = 0$. Also ist $\{v,w,e_i,e_j\}$ linear unabhängig.
+ 
+ Wir nehmen andererseits an, dass $(v_k, v_l)$ und $(w_k, w_l)$ linear abhängig sind. Dann gibt es $\lambda_1, \lambda_2 \in \R$ mit
+ \begin{equation}\label{eqn: small linear dependence abstract}
+  \lambda_1 \vect{v_k \\ v_l} + \lambda_2 \vect{w_k \\ w_l} = 0
+ \end{equation}
+ und $\lambda_1 \neq 0$ oder $\lambda_2 \neq 0$. (Vergleiche mit \eqref{eqn: small linear dependence example}). Dann ist
+ \begin{equation}\label{eqn: big linear dependence abstract}
+  \lambda_1 v + \lambda_2 w - (\lambda_1 v_i + \lambda_2 w_i) e_i - (\lambda_1 v_j +  \lambda_2 w_j) e_j = 0
+ \end{equation}
+ eine nichttrivale Linearkombination des Nullvektors: Dass der $i$-te und $j$-te Eintrag dieser Linearkombination $0$ sind folgt direkt aus der Wahl der Koeffizienten; für den $k$-ten und $l$-ten Eintrag folgt es aus \eqref{eqn: zero entries in the standard basis vectors} und \eqref{eqn: small linear dependence abstract}. (Vergleiche mit \eqref{eqn: big linear dependence example}!) Also sind auch $\{v,w,e_i,e_j\}$ linear abhängig.
+\end{proof}
+
+
+Zusammengefasst haben wir nun Folgendes erarbeitet: Um zu überprüfen, ob die Kollektion $\{v,w,e_i,e_j\}$ mit $1 \leq i < j \leq n$, $i < j$ eine Basis von $\R^4$ ist, müssen wir nur überprüfen, ob $\{v,w,e_i,e_j\}$ linear unabhängig ist, was nach Proposition \ref{prop: everything in abstract} genau dann gilt, wenn die beiden Vektoren $(v_k, v_l)$ und $(w_k, w_l)$ linear unabhängig sind, wobei $k$ und $l$ die beiden zu $i$ und $j$ komplementären Indizes sind. Nach Lemma \ref{lem: linear independence for two vectors} müssen wir hierfür nur überprüfen, ob $(v_k, v_l)$ und $(w_k, w_l)$ skalare Vielfache sind, was sich durch direktes Hinsehen lösen lässt.
+
+Die sechs Paaren von Vektoren, die wir überprüfen müssen, sind
+\begin{align*}
+ &\vect{1 \\ 3}, \vect{1 \\ 6}, \quad
+  \vect{-4 \\ 3}, \vect{8 \\ 6}, \quad
+  \vect{-4 \\ 1}, \vect{8 \\ 1}, \quad
+  \vect{1 \\ 3}, \vect{-3 \\ 6}, \\
+ &\vect{1 \\ 1}, \vect{-3 \\ 1}, \quad
+  \vect{1 \\ -4}, \vect{-3 \\ 8}.
+\end{align*}
+In jedem der sechs Fälle ergibt sich durch direktes Hinsehen, dass die beiden Vektoren keine skalaren Vielfachen sind. Damit ergibt sich, dass man zwei beliebige kanonische Basisvektoren $e_i$ und $e_j$ mit $i \neq j$ zu $v$ und $w$ hinzufügen kann, um eine Basis von $\R^4$ zu erhalten.
+
+
+
+
+
+\section*{Aufgabe 3}
+Wir führen ein allgemeineres Konzept ein: Es sei $V$ ein $K$-Vektorraum (nicht notwendigerweise endlichdimensional) und $f \colon V \to V$ ein Endomorphismus, d.h.\ $f$ ist $K$-linear. Für $\lambda \in K$ definieren wir
+\[
+ V_\lambda \coloneqq \{v \in V \mid f(v) = \lambda v\}.
+\]
+
+\begin{bsp}
+ Für $\lambda = 0$ haben wir
+ \[
+  V_0
+  = \{v \in V \mid f(v) = 0 \cdot v\}
+  = \{v \in V \mid f(v) = 0\}
+  = \ker f.
+ \]
+ Für $\lambda = 1$ haben wir
+ \[
+  V_1
+  = \{v \in V \mid f(v) = 1 \cdot v\}
+  = \{v \in V \mid f(v) = v \}
+  = \mathrm{Fix}(f).
+ \]
+\end{bsp}
+
+\begin{bem}
+ Man bezeichnet $V_\lambda$ als den \emph{Eigenraum} von $f$ zum \emph{Eigenwert} $\lambda$.
+\end{bem}
+
+
+Wir zeigen nun, dass $V_\lambda$ für alle $\lambda \in K$ ein Untervektorraum ist. Wir liefern hierfür zwei Beweise:
+
+Zum einen lassen sich naiv die Axiome eines Untervektorraumes überprüfen: Da
+\[
+ f(0) = 0 = \lambda \cdot 0
+\]
+ist $0 \in V_\lambda$. Sind $v,w \in V_\lambda$ so ist
+\[
+ f(v+w) = f(v)+f(w) = \lambda v + \lambda w = \lambda (v+w),
+\]
+also ist auch $v + w \in V_\lambda$. Ist $v \in V$ und $\mu \in K$, so ist
+\[
+ f(\mu v) = \mu f(v) = \mu \lambda v = \lambda (\mu v),
+\]
+also auch $\mu v \in V_\lambda$. Also ist $V_\lambda$ ein Untervektorraum.
+
+Mit ein wenig mehr Zusatzwissen lässt sich die Aussage auch weniger rechenaufwendig (und konzeptioneller) zeigen: Da
+\[
+ f \colon V \to V \quad \text{und} \quad \id_V \colon V \to V
+\]
+$K$-linear sind, ist auch
+\[
+ f - \lambda \id_V \colon V \to V, v \mapsto f(v) - \lambda v
+\]
+$K$-linear. (Hier benutzen wir, dass $\Hom_K(V,V)$ unter punktweiser Addition und Skalarmultiplikation ein $K$-Vektorraum ist.) Da für alle $v \in V$
+\begin{gather*}
+  f(v) = \lambda v
+  \Leftrightarrow f(v) - \lambda v = 0
+  \Leftrightarrow (f-\lambda \id_V)(v) = 0
+\shortintertext{ist}
+ \begin{aligned}
+  V_\lambda
+ &= \{v \in V \mid f(v) = \lambda v\} \\
+ &= \{v \in V \mid (f - \lambda \id_V)(v) = 0\} \\
+ &= \ker (f - \lambda \id_V)
+ \end{aligned}
+\end{gather*}
+ein Untervektorraum von $V$.
+
+
+
+
+
+\end{document}
