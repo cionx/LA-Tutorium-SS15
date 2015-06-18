@@ -57,6 +57,37 @@
 
 
 \begin{question}
+ Es sei $n \geq 1$ und $V_n \subseteq \R[X]$ der Untervektorraum der reellen Polynome vom \mbox{Grad $\leq n$}. Es sei
+ \[
+  D \colon V_n \to V_n, \, p \mapsto p'.
+ \]
+ Bestimmen Sie die darstellende Matrix von $D$ bezüglich der Basis
+ \[
+  \mc{B} \coloneqq (1, x, x^2, \dotsc, x^n)
+ \]
+ von $V_n$.
+\end{question}
+\begin{solution}
+ Es ist
+ \[
+  D(1) = 0, \quad D(x) = 1, \quad D(x^2) = 2x, \quad \dotsc, \quad D(x^n) = n x^{n-1}.
+ \]
+ Also ist
+ \[
+  \DM_\mc{B}(D) =
+  \begin{pmatrix}
+   0 & 1 &        &        &   \\
+     & 0 & 2      &        &   \\
+     &   & \ddots & \ddots &   \\
+     &   &        & 0      & n \\
+     &   &        &        & 0
+  \end{pmatrix}.
+ \]
+\end{solution}
+
+
+
+\begin{question}
  Für $z \in \C$ sei
  \[
   L_z \colon \C \to \C, w \mapsto z w
@@ -76,7 +107,6 @@
     \quad \text{und} \quad
     \Phi(z \cdot w) = \Phi(z) \cdot \Phi(w).
    \]
-  \item
  \end{enumerate}
 \end{question}
 \begin{solution}
