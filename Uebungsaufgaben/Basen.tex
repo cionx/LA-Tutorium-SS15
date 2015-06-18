@@ -1,0 +1,85 @@
+\section{Basen}
+
+
+\begin{question}
+ Es sei
+ \[
+  f \colon k^n \to k, (\lambda_1, \dotsc, \lambda_n) \mapsto \lambda_1 + \dotsb + \lambda_n.
+ \]
+ Bestimmen Sie eine Basis von $\im f$ und von $\ker f$ (als $k$-Vektorräume).
+\end{question}
+\begin{solution}
+ Da
+ \[
+  1 = f(1, 0, \dotsc, 0) \in \im f
+ \]
+ ist $\im f \neq 0$. Also ist $\dim \im f \geq 1$. Da auch $\dim \im f \leq \dim k = 1$ ist $\dim \im f = 1 = \dim k$ und somit $\im f = k$. Somit its $(1)$ eine Basis von $\im f$.
+ 
+ Nach der Dimensionsformel ist
+ \[
+  \dim \ker f = \dim k^n - \dim \im f = n-1.
+ \]
+ Es seien $v_1, \dotsc, v_{n-1} \in \ker f$ mit
+ \begin{align*}
+  v_1 = \vect{1 \\ -1 \\  0 \\ 0 \\ \vdots \\ 0 \\ 0 \\ 0},
+  v_2 = \vect{1 \\  0 \\ -1 \\ 0 \\ \vdots \\ 0 \\ 0 \\ 0},
+  \dotsc,
+  v_{n-1} = \vect{1 \\ 0 \\ 0 \\ 0 \\ \vdots \\ 0 \\ -1 \\ 0},
+  v_n = \vect{1 \\ 0 \\ 0 \\ 0 \\ \vdots \\ 0 \\ 0 \\ -1}.
+ \end{align*}
+ Die Familie $(v_1, \dotsc, v_{n-1})$ ist linear unabhängig, denn ist $(\lambda_1, \dotsc, \lambda_{n-1})$ eine Lösung des homogenes LGS
+ \[
+  \begin{pmatrix*}[r]
+    1     &  1     & \cdots &  1     &  1     \\
+   -1     &  0     & \cdots &  0     &  0     \\
+    0     & -1     & \cdots &  0     &  0     \\
+    0     &  0     & \cdots &  0     &  0     \\
+   \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0     &  0     & \cdots &  0     &  0     \\
+    0     &  0     & \cdots & -1     &  0     \\
+    0     &  0     & \cdots &  0     & -1
+  \end{pmatrix*},
+ \]
+ so ergibt sich für alle $i=1, \dotsc, n-1$ aus der $(i+1)$-ten Zeile, dass $\lambda_i = 0$. Da $(v_1, \dotsc, v_{n-1})$ linear unabhängig ist folgt aus $\dim \ker f = n-1$, dass es sich bereits um eine Basis von $\ker f$ handelt.
+\end{solution}
+
+
+\begin{question}
+ Es seien $V$ und $W$ zwei $k$-Vektorräume und $f \colon V \to W$ sei $k$-linear. Zeigen Sie:
+ \begin{enumerate}
+  \item
+   Ist $f$ injektiv und sind $v_1, \dotsc, v_n \in V$, so dass $(v_1, \dotsc, v_n)$ eine linear unabhängig ist, so ist auch $(f(v_1), \dotsc, f(v_n))$ linear unabhängig.
+  \item
+   Ist $f$ surjektiv und sind $v_1, \dotsc, v_n \in V$, so dass $(v_1, \dotsc, v_n)$ ein Erzeugendensystem von $V$ ist, so ist \mbox{$(f(v_1), \dotsc, f(v_n))$} ein Erzeugendensystem von $W$.
+  \item
+   Ist $f$ ein Isomorphismus und sind $v_1, \dotsc, v_n \in V$, so dass $(v_1, \dotsc, v_n)$ eine Basis von $V$ ist, so ist \mbox{$(f(v_1), \dotsc, f(v_n))$} eine Basis von $W$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Es seien $\lambda_1, \dotsc, \lambda_n \in k$ mit $\sum_{i=1}^n \lambda_i f(v_i) = 0$. Dann ist
+   \[
+    0 = \sum_{i=1}^n \lambda_i f(v_i) = f\left( \sum_{i=1}^n \lambda_i v_i \right),
+   \]
+   also $\sum_{i=1}^n \lambda_i v_i \in \ker f$. Aufgrund der Injektivität von $f$ ist $\ker = 0$. Also ist $\sum_{i=1}^n \lambda_i v_i = 0$. Wegen der linearen Unabhängigkeit von $(v_1, \dotsc, v_n)$ folgt, dass $\lambda_i = 0$ für alle $i = 1, \dotsc, n$.
+  \item
+   Es sei $w \in W$. Da $f$ surjektiv ist gibt es $v \in V$ mit $f(v) = w$. Da $(v_1, \dotsc, v_n)$ ein Erzeugendensystem von $V$ ist gibt es Skalare $\lambda_1, \dotsc, \lambda_n \in k$ mit $v = \sum_{i=1}^n \lambda_i v_i$. Damit ist
+   \[
+    w
+    = f(v)
+    = f\left( \sum_{i=1}^n \lambda_i v_i \right)
+    = \sum_{i=1}^n \lambda_i f(v_i)
+    \in \Lv(v_1, \dotsc, v_n).
+   \]
+  \item
+   Da $(v_1, \dotsc, v_n)$ eine insbesondere linear unabhängig ist und $f$ insbesondere injektiv ist folgt aus dem ersten Aufgabenteil, dass $(f(v_1), \dotsc, f(v_n))$ linear unabhängig ist. Da $(v_1, \dotsc, v_n)$ auch ein Erzeugendensystem von $V$ und $f$ auch surjektiv ist, folgt aus dem zweiten Aufgabenteil, dass $(f(v_1), \dotsc, f(v_n))$ auch ein Erzeugendensystem von $W$ ist. Damit ist $(f(v_1), \dotsc, f(v_n))$ eine Basis von $W$.
+ \end{enumerate}
+
+ 
+
+\end{solution}
+
+
+
+
