@@ -1,4 +1,4 @@
-\section{Darstellende Matrizen}
+\section{Darstellende Matrizen und Basiswechsel}
 
 
 \begin{question}
@@ -74,7 +74,7 @@
  \]
  Also ist
  \[
-  \DM_\mc{B}(D) =
+  \DM_\mc{\mc{B},\mc{B}}(D) =
   \begin{pmatrix}
    0 & 1 &        &        &   \\
      & 0 & 2      &        &   \\
@@ -84,6 +84,117 @@
   \end{pmatrix}.
  \]
 \end{solution}
+
+
+\begin{question}
+ Es sei $\mc{B} \coloneqq (b_1, b_2, b_3)$ die Basis von $\R^3$ mit
+ \[
+  b_1 = \vect{1 \\ 0 \\ 0}, \quad
+  b_2 = \vect{1 \\ 1 \\ 0}, \quad
+  \text{und} \quad
+  b_3 = \vect{1 \\ 1 \\ 1}.
+ \]
+ Finden Sie eine Matrix $A \in \Mat_3(\R)$ mit
+ \[
+  A b_1 = b_2, \quad
+  A b_2 = b_3, \quad
+  \text{und} \quad
+  A b_3 = b_1.
+ \]
+\end{question}
+\begin{solution}
+ Es sei $A \in \Mat_3(\R)$ und $a_i$ der $i$-te Spaltenvektor von $A$ für $i = 1, 2, 3$. Dann ist
+ \[
+  A b_1 = a_1, \quad
+  A b_2 = a_1 + a_2, \quad
+  \text{und} \quad
+  A b_3 = a_1 + a_2 + a_3.
+ \]
+ Das $A b_1 = b_2$ ist also äquivalent dazu, dass $a_1 = b_2$. Dass  $A b_2 = b_3$ ist damit äquivalent dazu, dass \[
+  b_3 = a_1 + a_2 = b_2 + a_2,
+ \]
+ also $a_2 = b_3 - b_2$. Dass $A b_3 = b_1$ ist damit äquivalent dazu, dass
+ \[
+  b_1 = a_1 + a_2 + a_3 = b_2 + b_3 - b_2 + a_3 = b_3 + a_3,
+ \]
+ also $a_3 =  b_1 - b_3$. Da
+ \[
+  a_1 = b_2 = \vect{1 \\ 1 \\ 0}, \quad
+  a_2 = b_3 - b_2 = \vect{0 \\ 0 \\ 1}, \quad
+  \text{und} \quad
+  a_3 = b_1 - b_3 = \vect{0 \\ -1 \\ -1}
+ \]
+ ist
+ \[
+  A =
+  \begin{pmatrix}
+   1 & 0 &  0 \\
+   1 & 0 & -1 \\
+   0 & 1 & -1
+  \end{pmatrix}.
+ \]
+ Durch direktes Nachrechnen ergibt sich, dass $A$ die gewünschten Bedingungen tatsächlich erfüllt.
+ 
+ Alternativ sei $f \colon \R^3 \to \R^3$ die eindeutige lineare Abbildung mit $f(b_1) = b_2$, $f(b_2) = b_3$ und $f(b_3) = b_1$. ($f$ existiert und ist eindeutig, da $\mc{B}$ eine Basis von $\R^3$ ist.) Dann ist
+ \[
+  \DM_{\mc{B},\mc{B}}(f) =
+  \begin{pmatrix}
+   0 & 0 & 1 \\
+   1 & 0 & 0 \\
+   0 & 1 & 0
+  \end{pmatrix}
+ \]
+ und die gesuchte Matrix $A$ ist
+ \[
+  A = \DM_{\mc{K},\mc{K}}(f),
+ \]
+ wobei $\mc{K} = (e_1, e_2, e_3)$ die Standardbasis von $\R^3$ ist. Da
+ \[
+  T^\mc{B}_\mc{K} =
+  \begin{pmatrix}
+   1 & 1 & 1 \\
+   0 & 1 & 1 \\
+   0 & 0 & 1
+  \end{pmatrix}
+  \quad\text{und damit}\quad
+  T^\mc{K}_\mc{B} =
+  (T^\mc{B}_\mc{K})^{-1}
+  \begin{pmatrix}
+   1 & -1 &  0 \\
+   0 &  1 & -1 \\
+   0 &  0 &  1
+  \end{pmatrix}
+ \]
+ ist
+ \begin{align*}
+  A
+  &= \DM_{\mc{K},\mc{K}}(f)
+  = T^\mc{B}_\mc{K} \DM_{\mc{B},\mc{B}}(f) T^\mc{K}_\mc{B} \\
+  &=
+  \begin{pmatrix}
+   1 & 1 & 1 \\
+   0 & 1 & 1 \\
+   0 & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+   0 & 0 & 1 \\
+   1 & 0 & 0 \\
+   0 & 1 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+   1 & -1 &  0 \\
+   0 &  1 & -1 \\
+   0 &  0 &  1
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+   1 & 0 &  0 \\
+   1 & 0 & -1 \\
+   0 & 1 & -1
+  \end{pmatrix}.
+ \end{align*}
+\end{solution}
+
 
 
 
