@@ -72,7 +72,40 @@
 \end{solution}
 
 
-% TODO: Gruppenmultiplikation bijektiv
+\begin{question}
+ Es sei $G$ eine Gruppe und $g \in G$. Zeigen Sie, dass die Abbildungen
+ \begin{gather*}
+  \lambda_g \colon G \to G, h \mapsto gh
+ \shortintertext{und}
+  \rho_g \colon G \to G, h \mapsto hg
+ \end{gather*}
+ bijektiv sind.
+\end{question}
+\begin{proof}
+ Für alle $h \in G$ ist
+ \[
+  (\lambda_g \circ \lambda_{g^{-1}})(h)
+  = \lambda_g( \lambda_{g^{-1}}(h) )
+  = \lambda_g( g^{-1}(h) )
+  = g g^{-1} h
+  = h.
+ \]
+ Also ist
+ \[
+  \lambda_g \circ \lambda_{g^{-1}} = \id
+  \quad\text{für alle $g \in G$}.
+ \]
+ Insbesondere ist damit auch
+ \[
+  \lambda_{g^{-1}} \circ \lambda_g
+  = \lambda_{g^{-1}} \circ \lambda_{(g^{-1})^{-1}}
+  = \id_G
+ \]
+ für alle $g \in G$. Also ist $\lambda_g$ invertierbar mit Inversen $\lambda_{g^{-1}}$.
+ 
+ Analog ergibt sich, dass $\rho_g$ invertierbar ist mit Inversen $\rho_{g^{-1}}$.
+\end{proof}
+
 
 
 \begin{question}
@@ -164,7 +197,15 @@
 \end{solution}
 
 
-% TODO: Kürzere Definition einer Untergruppe
+\begin{question}
+ Es sei $G$ eine Gruppe mit neutralen Element $e$ und $H \subseteq G$. Zeigen Sie, dass $H$ genau dann eine Untergruppe von $G$ ist, wenn $e \in H$ und $a b^{-1} \in H$ für alle $a,b \in G$.
+\end{question}
+\begin{solution}
+ Ist $H$ eine Untergruppe, so ist $e \in G$ und für alle $a,b \in H$ ist $b^{-1} \in H$ und damit auch $ab^{-1} \in H$.
+ 
+ Es sei andererseits $e \in H$ und $ab^{-1} \in H$ für alle $a,b \in H$. Dann ist für alle $a \in H$ auch $a^{-1} = ea^{-1} \in H$. Damit ist für alle $a,b \in H$ auch $b^{-1} \in H$ und somit $ab = a(b^{-1})^{-1} \in H$. Also ist $H$ eine Untergruppe von $G$.
+\end{solution}
+
 
 
 \begin{question}
@@ -289,15 +330,15 @@
    \[
     f(x^{-1}) = f(x)^{-1} = 1_H^{-1} = 1_H
    \]
-   und somit $1_H \in \ker f$. Insgesamt zeigt dies, dass $\ker f$ eine Untergruppe ist.
+   und somit $x^{-1} \in \ker f$. Insgesamt zeigt dies, dass $\ker f$ eine Untergruppe ist.
   \item
    Es ist $1_H = f(1_G) \in \im f$. Für $x, y \in \im f$ gibt es $x', y' \in G$ mit $f(x') = x$ und $f(y') = y$. Dann ist
    \[
     xy = f(x') f(y') = f(x' y') \in \im f.
    \]
-   Für $x \in \im f$ ist außerdem auch
+   Für $x \in \im f$ gibt es $\tilde{x} \in G$ mit $f(\tilde{x}) = x$, weshalb auch
    \[
-    x^{-1} = f(x)^{-1} = f(x^{-1}) \in G.
+    x^{-1} = f(\tilde{x})^{-1} = f(\tilde{x}^{-1}) \in G.
    \]
    Insgesamt zeigt dies, dass $\im f$ eine Untergruppe ist.
  \end{enumerate}

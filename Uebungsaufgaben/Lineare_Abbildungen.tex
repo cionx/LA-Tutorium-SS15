@@ -94,6 +94,83 @@
 
 
 \begin{question}
+ Die \emph{Spur} einer quadratischen Matrix $A = (a_{ij})_{1 \leq i,j \leq n} \in \Mat_n(k)$ ist definiert also die Summe ihrer Diagonaleinträge, also
+ \[
+  \spur A
+  = \spur
+  \begin{pmatrix}
+   a_{11} & \cdots & a_{1n} \\
+   \vdots & \ddots & \vdots \\
+   a_{n1} & \cdots & a_{nn}
+  \end{pmatrix}
+  = a_{11} + \dotsb + a_{nn}
+  = \sum_{i=1}^n a_{ii}
+ \]
+ Zeigen Sie:
+ \begin{enumerate}
+  \item
+   Die Spurabbildung $\spur \colon \Mat_n(k) \to k$ ist $k$-linear.
+  \item
+   Bestimmen Sie eine Basis von Bild und Kern von $\spur \colon \Mat_2(\R) \to \R$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Für $A, B \in \Mat_n(k)$ mit $A = (a_{ij})_{1 \leq i,j \leq n}$ und $B = (b_{ij})_{1 \leq i,j \leq n}$ ist
+   \begin{align*}
+    \spur(A+B)
+    &= \spur( (a_{ij})_{1 \leq i,j \leq n} + (b_{ij})_{1 \leq i,j \leq n} ) \\
+    &= \spur( (a_{ij}+b_{ij})_{1 \leq i,j \leq n} ) \\
+    &= \sum_{i=1}^n (a_{ii} + b_{ii})
+    = \left(\sum_{i=1}^n a_{ii}\right) + \left(\sum_{i=1}^n b_{ii}\right) \\
+    &= (\spur (a_{ij})_{1 \leq i,j \leq n}) + (\spur (b_{ij})_{1 \leq i,j \leq n}) \\
+    &= (\spur A) + (\spur B).
+   \end{align*}
+   Für $A \in \Mat_n(k)$ mit $A = (a_{ij})_{1 \leq i,j \leq n}$ und $\lambda \in k$ ist
+   \begin{align*}
+    \spur(\lambda A)
+    &= \spur(\lambda (a_{ij})_{1 \leq i,j \leq n})
+    = \spur (\lambda a_{ij})_{1 \leq i,j \leq n} \\
+    &= \sum_{i=1}^n \lambda a_{ii}
+    = \lambda \sum_{i=1}^n a_{ii}
+    = \lambda \spur (a_{ij})_{1 \leq i,j \leq n} \\
+    &= \lambda \spur A.
+   \end{align*}
+  \item
+   Wegen der Linearität von $\spur$ ist $\im \spur \subseteq \R$ ein Untervektorraum. Da $\dim \R = 1$ ist entweder $\dim \im \spur = 0$ und damit $\im \spur = 0$ oder $\dim \im \spur = 1$ und damit $\im \spur = \R$. Es ist $\im \spur \neq 0$, da
+   \[
+    1 = \spur \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \in \im \spur.
+   \]
+   Also ist $\im \spur = \R$. Insbesondere ist $(1)$ ein Basis von $\im \spur$.
+   
+   Nach der Dimensionsformel ist
+   \[
+    \dim \ker \spur = \dim \R^4 - \dim \im \spur = 4 - 1 = 3.
+   \]
+   Für eine Basis von $\ker \spur$ genügt es also drei linear unabhängige Vektoren in $\ker \spur$ zu finden. Es seien
+   \[
+    e = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad
+    h = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, \quad
+    \text{und} \quad
+    f = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.
+   \]
+   Es ist $\spur e = \spur h = \spur f = 0$, also $e, f, h \in \ker \spur$. Die drei Matrizen sind auch linear unabhängig, denn für $\lambda_1, \lambda_2, \lambda_3 \in \R$ mit
+   \[
+    0
+    = \lambda_1 e + \lambda_2 h + \lambda_3 f
+    =
+    \begin{pmatrix}
+     \lambda_2 &  \lambda_1 \\
+     \lambda_3 & -\lambda_2
+    \end{pmatrix}
+   \]
+   ist $\lambda_1 = \lambda_2 = \lambda_3 = 0$. Es ist also $(e,h,f)$ eine Basis von $\ker \spur$.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
  Es seien $V_1$, $V_2$ und $V_3$ $k$-Vektorräume und $g \colon V_2 \to V_3$ $k$-linear. Zeigen Sie, dass die Abbildung
  \[
   G \colon \Hom(V_1, V_2) \to \Hom(V_1, V_3), f \mapsto g \circ f

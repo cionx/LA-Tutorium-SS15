@@ -1,4 +1,4 @@
-\section{Basen}
+\section{Basen und Dimension}
 
 
 \begin{question}
@@ -75,10 +75,67 @@
   \item
    Da $(v_1, \dotsc, v_n)$ eine insbesondere linear unabhängig ist und $f$ insbesondere injektiv ist folgt aus dem ersten Aufgabenteil, dass $(f(v_1), \dotsc, f(v_n))$ linear unabhängig ist. Da $(v_1, \dotsc, v_n)$ auch ein Erzeugendensystem von $V$ und $f$ auch surjektiv ist, folgt aus dem zweiten Aufgabenteil, dass $(f(v_1), \dotsc, f(v_n))$ auch ein Erzeugendensystem von $W$ ist. Damit ist $(f(v_1), \dotsc, f(v_n))$ eine Basis von $W$.
  \end{enumerate}
-
- 
-
 \end{solution}
+
+
+\begin{question}
+ Es seien $U$, $V$ und $W$ Vektorräume, und $f \colon U \to V$ und $g \colon V \to W$ linear. $f$ sei injektiv, $g$ sei surjektiv und $\im f = \ker g$. Zeigen Sie, dass
+ \[
+  \dim V = \dim U + \dim W.
+ \]
+\end{question}
+\begin{solution}
+ Wegen der Injektivität von $f$ ist $\ker f = 0$ und wegen der Surjektivität von $g$ ist $\im g = W$. Durch wiederholten Anwenden der Dimensionsformel ergibt sich daraus, dass
+ \begin{align*}
+  \dim W
+  &= \dim \im g \\
+  &= \dim V - \dim \ker g \\
+  &= \dim V - \dim \im f \\
+  &= \dim V - (\dim U - \dim \ker f) \\
+  &= \dim V - \dim U + \dim \ker f \\
+  &= \dim V - \dim U,
+ \end{align*}
+ und damit $\dim V = \dim U + \dim W$.
+\end{solution}
+
+
+\begin{question}
+ Es seien $V_1$, $V_2$, $V_3$, $V_4$ Vektorräume und $f_1$, $f_2$, $f_3$ lineare Abbildungen mit
+ \[
+  V_1 \xlongrightarrow{f_1} V_2 \xlongrightarrow{f_2} V_3 \xlongrightarrow{f_3} V_4.
+ \]
+ $f_1$ sei injektiv, $f_3$ sei surjektiv, und es gilte $\im f_1 = \ker f_2$ sowie $\im f_2 = \ker f_3$. Zeigen Sie, dass
+ \[
+  \dim V_1 + \dim V_3 = \dim V_2 + \dim V_4.
+ \]
+\end{question}
+\begin{solution}
+ Wegen der Injektivität von $f_1$ ist $\ker f_1 = 0$ und wegen der Surjektivität von $f_3$ ist $\im f_3 = V_4$. Durch wiederholtes Anwenden der Dimensionsformel ergibt sich, dass
+ \begin{align*}
+  \dim V_4
+  &= \dim \im f_3 \\
+  &= \dim V_3 - \dim \ker f_3 \\
+  &= \dim V_3 - \dim \im f_2 \\
+  &= \dim V_3 - (\dim V_2 - \dim \ker f_2) \\
+  &= \dim V_3 - \dim V_2 + \dim \ker f_2 \\
+  &= \dim V_3 - \dim V_2 + \dim \im f_1 \\
+  &= \dim V_3 - \dim V_2 + \dim V_1 - \dim \ker f_1 \\
+  &= \dim V_3 - \dim V_2 + \dim V_1.
+ \end{align*}
+ Durch Umstellen ergibt sich, dass
+ \[
+  \dim V_1 + \dim V_3 = \dim V_2 + \dim V_4.
+ \]
+\end{solution}
+
+
+
+
+
+
+
+
+
 
 
 
